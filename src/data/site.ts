@@ -36,7 +36,7 @@ export const primaryNav: NavItem[] = [
   { to: "/", label: { en: "Home", bn: "হোম" } },
   { to: "/about", label: { en: "About", bn: "পরিচিতি" } },
   { to: "/academics", label: { en: "Academics", bn: "শিক্ষাক্রম" } },
-  { to: "/notices", label: { en: "Notice Board", bn: "নোটিশ বোর্ড" } },
+  { to: "/notices", label: { en: "Notice", bn: "নোটিশ বোর্ড" } },
   { to: "/results", label: { en: "Results", bn: "ফলাফল" } },
   { to: "/gallery", label: { en: "Gallery", bn: "গ্যালারি" } },
   { to: "/admission", label: { en: "Admission", bn: "ভর্তি" } },
@@ -48,7 +48,6 @@ export const moreNav: NavItem[] = [
   { to: "/calendar", label: { en: "Academic Calendar", bn: "শিক্ষা পঞ্জি" } },
   { to: "/routine", label: { en: "Class Routine", bn: "ক্লাস রুটিন" } },
   { to: "/achievements", label: { en: "Achievements", bn: "অর্জন" } },
-  { to: "/facilities", label: { en: "Facilities", bn: "সুবিধাসমূহ" } },
 ];
 
 /* ---------------------------------- Notices --------------------------------- */
@@ -58,7 +57,7 @@ export type NoticeCategory = "general" | "exam" | "admission" | "event" | "holid
 export type Notice = {
   id: string;
   title: Bi;
-  body: Bi;
+  image: string;
   category: NoticeCategory;
   date: string; // ISO
   pinned?: boolean;
@@ -74,80 +73,6 @@ export const noticeCategories: { id: NoticeCategory | "all"; label: Bi }[] = [
   { id: "holiday", label: { en: "Holiday", bn: "ছুটি" } },
 ];
 
-export const defaultNotices: Notice[] = [
-  {
-    id: "n-2026-014",
-    category: "admission",
-    date: "2026-07-28",
-    pinned: true,
-    title: {
-      en: "Admission open for Academic Year 2027 (Play Group – Class X)",
-      bn: "২০২৭ শিক্ষাবর্ষে ভর্তি চলছে (প্লে গ্রুপ – দশম শ্রেণি)",
-    },
-    body: {
-      en: "Applications for the 2027 academic year are now open for Play Group through Class X. Forms may be submitted online through the Admission page or collected from the school office between 9:00 AM and 2:00 PM on working days. The admission test for Classes III–X will be held on 12 September 2026. Required documents: birth certificate photocopy, two passport-size photographs, previous school transfer certificate and the guardian's national ID copy.",
-      bn: "২০২৭ শিক্ষাবর্ষের জন্য প্লে গ্রুপ থেকে দশম শ্রেণি পর্যন্ত ভর্তি আবেদন গ্রহণ শুরু হয়েছে। অনলাইনে ভর্তি পাতা থেকে অথবা কর্মদিবসে সকাল ৯টা থেকে দুপুর ২টার মধ্যে অফিস থেকে ফরম সংগ্রহ করা যাবে। তৃতীয় থেকে দশম শ্রেণির ভর্তি পরীক্ষা ১২ সেপ্টেম্বর ২০২৬ তারিখে অনুষ্ঠিত হবে। প্রয়োজনীয় কাগজপত্র: জন্মনিবন্ধন ফটোকপি, দুই কপি পাসপোর্ট সাইজ ছবি, পূর্ববর্তী প্রতিষ্ঠানের ছাড়পত্র এবং অভিভাবকের জাতীয় পরিচয়পত্রের কপি।",
-    },
-  },
-  {
-    id: "n-2026-013",
-    category: "exam",
-    date: "2026-07-20",
-    pinned: true,
-    title: {
-      en: "Half-Yearly Examination 2026 routine published",
-      bn: "অর্ধবার্ষিক পরীক্ষা ২০২৬ এর রুটিন প্রকাশিত",
-    },
-    body: {
-      en: "The Half-Yearly Examination will begin on 10 August 2026 and continue until 24 August 2026. Examinations start at 10:00 AM sharp; students must be seated by 9:40 AM with their admit card. The full routine is available in the Download Center as a printable PDF. Students with outstanding fees must clear dues before collecting admit cards.",
-      bn: "অর্ধবার্ষিক পরীক্ষা ১০ আগস্ট ২০২৬ থেকে শুরু হয়ে ২৪ আগস্ট ২০২৬ পর্যন্ত চলবে। পরীক্ষা সকাল ১০টায় শুরু হবে; শিক্ষার্থীদের প্রবেশপত্রসহ সকাল ৯টা ৪০ মিনিটের মধ্যে আসন গ্রহণ করতে হবে। সম্পূর্ণ রুটিন ডাউনলোড সেন্টারে পিডিএফ আকারে পাওয়া যাবে। বকেয়া বেতন পরিশোধ সাপেক্ষে প্রবেশপত্র সংগ্রহ করা যাবে।",
-    },
-  },
-  {
-    id: "n-2026-012",
-    category: "event",
-    date: "2026-07-11",
-    title: {
-      en: "Annual Qirat & Hifz competition — registration closes 5 August",
-      bn: "বার্ষিক কিরাত ও হিফজ প্রতিযোগিতা — নিবন্ধন ৫ আগস্ট পর্যন্ত",
-    },
-    body: {
-      en: "Our annual Qirat and Hifz competition will be held in the main auditorium. Students from all sections may register with their class teacher. Three categories: Junior (Class I–III), Intermediate (Class IV–VI) and Senior (Class VII–X). Winners receive certificates, medals and a scholarship on tuition fees.",
-      bn: "প্রধান মিলনায়তনে বার্ষিক কিরাত ও হিফজ প্রতিযোগিতা অনুষ্ঠিত হবে। সকল শাখার শিক্ষার্থীরা শ্রেণিশিক্ষকের নিকট নিবন্ধন করতে পারবে। তিনটি বিভাগ: জুনিয়র (১ম–৩য়), ইন্টারমিডিয়েট (৪র্থ–৬ষ্ঠ) ও সিনিয়র (৭ম–১০ম)। বিজয়ীরা সনদ, পদক ও বেতনে বৃত্তি পাবে।",
-    },
-  },
-  {
-    id: "n-2026-011",
-    category: "holiday",
-    date: "2026-06-30",
-    title: { en: "Summer & Eid-ul-Adha holiday schedule", bn: "গ্রীষ্মকালীন ও ঈদুল আজহার ছুটির সূচি" },
-    body: {
-      en: "The academy will remain closed from 4 July to 16 July 2026 for the summer vacation and Eid-ul-Adha. Classes resume on 17 July 2026 at the usual time. The administrative office will stay open on 8 and 12 July for fee collection only.",
-      bn: "গ্রীষ্মকালীন ছুটি ও ঈদুল আজহা উপলক্ষে ৪ জুলাই থেকে ১৬ জুলাই ২০২৬ পর্যন্ত একাডেমি বন্ধ থাকবে। ১৭ জুলাই ২০২৬ থেকে যথারীতি ক্লাস শুরু হবে। কেবল বেতন গ্রহণের জন্য ৮ ও ১২ জুলাই অফিস খোলা থাকবে।",
-    },
-  },
-  {
-    id: "n-2026-010",
-    category: "general",
-    date: "2026-06-18",
-    title: { en: "Parents' meeting for Classes VI–X", bn: "ষষ্ঠ–দশম শ্রেণির অভিভাবক সভা" },
-    body: {
-      en: "A parents' meeting will be held on Friday, 26 June 2026 at 10:00 AM in the school hall. Class teachers will discuss half-yearly preparation, attendance and homework performance. Attendance of at least one guardian per student is requested.",
-      bn: "আগামী শুক্রবার, ২৬ জুন ২০২৬ সকাল ১০টায় স্কুল হলে অভিভাবক সভা অনুষ্ঠিত হবে। শ্রেণিশিক্ষকগণ অর্ধবার্ষিক প্রস্তুতি, উপস্থিতি ও বাড়ির কাজ নিয়ে আলোচনা করবেন। প্রতি শিক্ষার্থীর পক্ষে অন্তত একজন অভিভাবকের উপস্থিতি কাম্য।",
-    },
-  },
-  {
-    id: "n-2025-041",
-    category: "exam",
-    date: "2025-12-02",
-    archived: true,
-    title: { en: "Annual Examination 2025 result published", bn: "বার্ষিক পরীক্ষা ২০২৫ এর ফলাফল প্রকাশিত" },
-    body: {
-      en: "Results of the Annual Examination 2025 have been published. Students may check their marksheet online from the Results page using roll, student ID or registration number.",
-      bn: "বার্ষিক পরীক্ষা ২০২৫ এর ফলাফল প্রকাশিত হয়েছে। শিক্ষার্থীরা রোল, স্টুডেন্ট আইডি বা রেজিস্ট্রেশন নম্বর দিয়ে ফলাফল পাতা থেকে মার্কশিট দেখতে পারবে।",
-    },
-  },
-];
 
 export const defaultSettings: SiteSettings = {
   name: school.name.en,
@@ -570,7 +495,6 @@ export const portalStudents: PortalStudent[] = [
 ];
 
 /* --------------------------------- Academics -------------------------------- */
-
 export const academicSections = [
   {
     id: "hifz",
@@ -583,13 +507,12 @@ export const academicSections = [
       bn: "নূরানী কায়দা, তাজবিদ, নিয়মিত মুরাজাআহ, ইসলামী শিক্ষা ও সাধারণ শিক্ষার সমন্বয়ে অনাবাসিক পূর্ণাঙ্গ হিফজ কার্যক্রম।"
     },
     subjects: [
-      "Noorani Qaida",
-      "Hifz-ul-Quran",
-      "Tajweed",
-      "Muraja'ah",
-      "Arabic",
-      "Islamic Studies",
-      "NCTB Curriculum"
+      { en: "Hifz-ul-Quran", bn: "হিফজুল কুরআন" },
+      { en: "Tajweed and Makhraj", bn: "তাজবীদ ও মাখরাজ" },
+      { en: "Kalimah & Masail", bn: "কালিমা ও মাসায়েল" },
+      { en: "Bangla", bn: "বাংলা" },
+      { en: "English", bn: "ইংরেজি" },
+      { en: "Mathematics", bn: "গণিত" }
     ]
   },
 
@@ -604,13 +527,13 @@ export const academicSections = [
       bn: "শিশুবান্ধব পরিবেশে নূরানী কায়দা, কুরআন শিক্ষা, বাংলা, ইংরেজি, গণিত ও নৈতিক শিক্ষার সমন্বিত পাঠদান।"
     },
     subjects: [
-      "Arabic Writing",
-      "Kalimah & Masail",
-      "Quran & Tajweed",
-      "Hadith Sharif",
-      "Bangla",
-      "English",
-      "Mathematics",
+      { en: "Arabic Writing", bn: "আরবি লেখা" },
+      { en: "Kalimah & Masail", bn: "কালিমা ও মাসায়েল" },
+      { en: "Quran & Tajweed", bn: "কুরআন ও তাজবিদ" },
+      { en: "Hadith Sharif", bn: "হাদিস শরিফ" },
+      { en: "Bangla", bn: "বাংলা" },
+      { en: "English", bn: "ইংরেজি" },
+      { en: "Mathematics", bn: "গণিত" }
     ]
   },
 
@@ -625,14 +548,14 @@ export const academicSections = [
       bn: "জাতীয় শিক্ষাক্রমের পাশাপাশি আরবি ভাষা, কুরআন তিলাওয়াত, ইসলামী শিক্ষা ও নৈতিক চরিত্র গঠনের বিশেষ ব্যবস্থা।"
     },
     subjects: [
-      "Arabic",
-      "Quran & Tajweed",
-      "Aqayed & Fiqh",
-      "Bangla",
-      "English",
-      "Mathematics",
-      "Science",
-      "BGS" 
+      { en: "Arabic", bn: "আরবি" },
+      { en: "Quran & Tajweed", bn: "কুরআন ও তাজবিদ" },
+      { en: "Aqayed & Fiqh", bn: "আকাইদ ও ফিকহ" },
+      { en: "Bangla", bn: "বাংলা" },
+      { en: "English", bn: "ইংরেজি" },
+      { en: "Mathematics", bn: "গণিত" },
+      { en: "Science", bn: "বিজ্ঞান" },
+      { en: "BGS", bn: "বাংলাদেশ ও বিশ্বপরিচয়" }
     ]
   },
 
@@ -647,24 +570,23 @@ export const academicSections = [
       bn: "নারী শিক্ষার্থীদের জন্য পৃথক শ্রেণিকক্ষ এবং নিরাপদ পরিবেশে ইসলামী ও সাধারণ শিক্ষার সমন্বিত কার্যক্রম।"
     },
     subjects: [
-      "Bangla 1st",
-      "Bangla 2nd",
-      "English 1st",
-      "English 2nd", 
-      "Mathematics",
-      "Science",
-      "Arabic",
-      "Quran Majeed",
-      "Hadith",
-      "Nahumir",
-      "BGS",
-      "ICT",
-      "Mufiduth Tawlebeen", 
-      "Aqayed & Fiqh"
+      { en: "Bangla 1st", bn: "বাংলা ১ম পত্র" },
+      { en: "Bangla 2nd", bn: "বাংলা ২য় পত্র" },
+      { en: "English 1st", bn: "ইংরেজি ১ম পত্র" },
+      { en: "English 2nd", bn: "ইংরেজি ২য় পত্র" },
+      { en: "Mathematics", bn: "গণিত" },
+      { en: "Science", bn: "বিজ্ঞান" },
+      { en: "Arabic", bn: "আরবি" },
+      { en: "Quran Majeed", bn: "কুরআন মাজীদ" },
+      { en: "Hadith", bn: "হাদিস" },
+      { en: "Nahumir", bn: "নাহুমির" },
+      { en: "BGS", bn: "বাংলাদেশ ও বিশ্বপরিচয়" },
+      { en: "ICT", bn: "তথ্য ও যোগাযোগ প্রযুক্তি" },
+      { en: "Mufiduth Tawlebeen", bn: "মুফিদুত তালেবীন" },
+      { en: "Aqayed & Fiqh", bn: "আকাইদ ও ফিকহ" }
     ]
   }
 ];
-
 export const teachers = [
   {
     name: { en: "Mohammed Fakhruddin Babar", bn: "মুহাম্মদ ফখরুদ্দিন বাবর" },
@@ -674,12 +596,12 @@ export const teachers = [
   {
     name: { en: "Md. Kurshedul Alam", bn: "মো: খুরশেদুল আলম" },
     role: { en: "Senior Teacher", bn: "সিনিয়র শিক্ষক" },
-    detail: { en: "English, Mathematics & BGS", bn: "ইংরেজি, গণিত ও বাংলাদেশ ও বিশ্বপরিচয়" },
+    detail: { en: "BGS, Mathematics & General Knowledge", bn: "বাংলাদেশ ও বিশ্বপরিচয়, গণিত ও সাধারণ জ্ঞান" },
   },
   {
     name: { en: "Md. Hossain", bn: "মো: হোসাইন" },
     role: { en: "Senior Teacher", bn: "সিনিয়র শিক্ষক" },
-    detail: { en: "Bangla & English", bn: "বাংলা ও ইংরেজি" },
+    detail: { en: "Bangla, Mathematics & English", bn: "বাংলা, গণিত ও ইংরেজি" },
   },
   {
     name: { en: "Md. Zakerul Islam", bn: "মো: জাকেরুল ইসলাম" },
@@ -689,12 +611,12 @@ export const teachers = [
   {
     name: { en: "Md. Saif", bn: "মো: সাইফ" },
     role: { en: "Teacher", bn: "শিক্ষক" },
-    detail: { en: "Bangla", bn: "বাংলা" },
+    detail: { en: "Bangla & English", bn: "বাংলা ও ইংরেজি" },
   },
   {
     name: { en: "Md. Najmul Huaq", bn: "মো: নাজমুল হক" },
     role: { en: "Teacher", bn: "শিক্ষক" },
-    detail: { en: "Arabic, Bangla & English", bn: "আরবি, বাংলা ও ইংরেজি" },
+    detail: { en: "Arabic, Bangla & Mathematics", bn: "আরবি, বাংলা ও গণিত" },
   },
   {
     name: { en: "Md. Sirajul Munir", bn: "মো: সিরাজুল মুনির" },
@@ -709,12 +631,12 @@ export const teachers = [
   {
     name: { en: "Mst. Naima", bn: "মোছা: নাঈমা" },
     role: { en: "Teacher — Girls Department", bn: "শিক্ষিকা — বালিকা বিভাগ" },
-    detail: { en: "Arabic ", bn: "আরবি" },
+    detail: { en: "Arabic, Aqayed Fiqh ", bn: "আরবি, আকাইদ ফিকাহ" },
   },
   {
     name: { en: "Mst. Shanta", bn: "মোছা: শান্তা" },
     role: { en: "Teacher — Girls Department", bn: "শিক্ষিকা — বালিকা বিভাগ" },
-    detail: { en: "Mathematics, English & BGS", bn: "গণিত, ইংরেজি ও বাংলাদেশ ও বিশ্বপরিচয়" },
+    detail: { en: "Science, English & BGS", bn: "বিজ্ঞান, ইংরেজি ও বাংলাদেশ ও বিশ্বপরিচয়" },
   },
   {
     name: { en: "Hafeez Mawlana Osama", bn: "হাফেজ মাওলানা উসামা" },

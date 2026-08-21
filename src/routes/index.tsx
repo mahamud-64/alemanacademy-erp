@@ -43,11 +43,31 @@ function Home() {
   const latest = notices.filter((n) => !n.archived).slice(0, 4);
 
   const stats = [
-    { value: "1,200+", label: { en: "Students", bn: "শিক্ষার্থী" }, icon: Users },
-    { value: "34", label: { en: "Teachers", bn: "শিক্ষক" }, icon: GraduationCap },
-    { value: "100%", label: { en: "SSC pass rate", bn: "এসএসসি পাসের হার" }, icon: ShieldCheck },
-    { value: `${new Date().getFullYear() - school.established}`, label: { en: "Years of service", bn: "বছরের পথচলা" }, icon: BookOpen },
-  ];
+
+  {
+    value: { en: "12", bn: "১২" },
+    label: { en: "Teachers", bn: "শিক্ষক" },
+    icon: GraduationCap,
+  },
+  {
+    value: { en: "4", bn: "৪" },
+    label: { en: "Academic Sections", bn: "শিক্ষার স্তর" },
+    icon: BookOpen,
+  },
+  {
+    value: { en: "100%", bn: "১০০%" },
+    label: { en: "Pass Rate", bn: "পাসের হার" },
+    icon: ShieldCheck,
+  },
+  {
+    value: {
+    en: `${new Date().getFullYear() - school.established}`,
+    bn: `${new Date().getFullYear() - school.established}`,
+    },
+    label: { en: "Years of Service", bn: "বছরের পথচলা" },
+    icon:  CalendarDays,
+  },
+];
 
   const quickLinks = [
     { to: "/admission", icon: GraduationCap, label: { en: "Admission", bn: "ভর্তি" } },
@@ -73,12 +93,13 @@ function Home() {
             <span className="inline-flex items-center gap-2 rounded-full bg-gold/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-gold">
               {t("Established", "প্রতিষ্ঠিত")} {school.established} 
             </span>
-            <h1 className="mt-5 text-4xl font-bold leading-tight text-primary-foreground sm:text-5xl">
-              {lang === "bn" ? settings.nameBn : settings.name}
-            </h1>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-primary-foreground/85 sm:text-lg">
               {lang === "bn" ? settings.taglineBn : settings.tagline}
             </p>
+            <h1 className="mt-5 text-4xl font-bold leading-tight text-primary-foreground sm:text-5xl">
+              {lang === "bn" ? settings.nameBn : settings.name}
+            </h1>
+            
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/admission"
@@ -124,8 +145,8 @@ function Home() {
               eyebrow={t("Welcome", "স্বাগতম")}
               title={t("A balanced education for Deen and Dunya", "দ্বীন ও দুনিয়ার ভারসাম্যপূর্ণ শিক্ষা")}
               subtitle={t(
-                "Al Eman Islamic Academy follows the NCTB national curriculum alongside daily Qur'an tilawat, Arabic language and Islamic studies. Our teachers nurture strong character, discipline and academic excellence from the earliest years.",
-                "আল ঈমান ইসলামিক একাডেমি এনসিটিবি জাতীয় শিক্ষাক্রমের পাশাপাশি প্রতিদিন কুরআন তিলাওয়াত, আরবি ভাষা ও ইসলাম শিক্ষা পরিচালনা করে। আমাদের শিক্ষকগণ শুরু থেকেই সুন্দর চরিত্র, শৃঙ্খলা ও শিক্ষার শ্রেষ্ঠত্ব গড়ে তোলেন।",
+                "We nurture young minds through a balanced blend of Islamic values, Qur’anic learning, language skills, academic education, and character development.",
+                "ইসলামী মূল্যবোধ, কুরআন শিক্ষা, ভাষাজ্ঞান, সাধারণ শিক্ষা ও নৈতিক চরিত্র গঠনের সমন্বয়ে আমরা কোমলমতি শিক্ষার্থীদের বিকাশে কাজ করে যাচ্ছি।"
               )}
             />
             <Link
@@ -139,7 +160,7 @@ function Home() {
             {stats.map((s) => (
               <div key={s.value} className="surface-card p-6 text-center">
                 <s.icon className="mx-auto size-6 text-gold" aria-hidden />
-                <p className="mt-3 text-2xl font-bold text-primary">{s.value}</p>
+                <p className="mt-3 text-2xl font-bold text-primary">{tb(s.value)}</p>
                 <p className="mt-1 text-xs text-muted-foreground">{tb(s.label)}</p>
               </div>
             ))}
@@ -164,8 +185,8 @@ function Home() {
               <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{tb(s.detail)}</p>
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {s.subjects.slice(0, 4).map((sub) => (
-                  <Badge key={sub} tone="muted">
-                    {sub}
+                  <Badge key={sub.en} tone="muted">
+                    {tb(sub)}
                   </Badge>
                 ))}
               </div>
@@ -182,9 +203,9 @@ function Home() {
       {/* Notices + achievements */}
       <Section muted>
         <div className="grid gap-10 lg:grid-cols-3">
-          <div className="lg:col-span-2">
+          <div className="min-w-0 lg:col-span-2">
             <SectionTitle align="left" eyebrow={t("Notice Board", "নোটিশ বোর্ড")} title={t("Latest notices", "সর্বশেষ নোটিশ")} />
-            <ul className="mt-6 divide-y divide-border overflow-hidden rounded-xl border border-border bg-card">
+            <ul className="mt-6 min-w-0 divide-y divide-border overflow-hidden rounded-xl border border-border bg-card">
               {latest.map((n) => (
                 <li key={n.id}>
                   <Link to="/notices/$noticeId" params={{ noticeId: n.id }} className="flex gap-4 p-5 hover:bg-muted/60">
@@ -199,8 +220,23 @@ function Home() {
                         <Badge tone={n.pinned ? "gold" : "muted"}>{n.category}</Badge>
                         {n.pinned ? <Badge tone="primary">{t("Pinned", "পিন করা")}</Badge> : null}
                       </div>
-                      <h3 className="mt-1.5 truncate text-sm font-semibold text-foreground">{tb(n.title)}</h3>
-                      <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">{tb(n.body)}</p>
+                     <h3 className="mt-1.5 truncate text-sm font-semibold text-foreground">
+                        {n.title ? tb(n.title) : t("Notice", "নোটিশ")}
+                      </h3>
+
+                      <div className="mt-2 flex items-center gap-2">
+                        {n.image ? (
+                          <img
+                            src={n.image}
+                            alt=""
+                            className="size-10 shrink-0 rounded-md object-cover"
+                          />
+                        ) : null}
+
+                        <span className="text-xs text-muted-foreground">
+                          {t("View notice", "নোটিশ দেখুন")} →
+                        </span>
+                      </div>
                     </div>
                   </Link>
                 </li>

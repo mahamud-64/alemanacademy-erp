@@ -186,7 +186,7 @@
 .sliding-news-track {
   display: flex;
   width: max-content;
-  animation: sliding-news-scroll 35s linear infinite;
+  animation: sliding-news-scroll 27s linear infinite;
   will-change: transform;
 }
 

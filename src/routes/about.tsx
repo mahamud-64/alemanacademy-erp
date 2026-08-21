@@ -64,8 +64,8 @@ function About() {
         crumb={t("About", "পরিচিতি")}
         title={t("About Our Academy", "আমাদের একাডেমি পরিচিতি")}
         subtitle={t(
-          "Serving Chattogram since 2017 with an education that honours both revelation and reason.",
-          "২০১৭ সাল থেকে  ও যুক্তির সমন্বয়ে চট্টগ্রামে শিক্ষা সেবা প্রদান করে আসছি।",
+          "Serving Hathazari since 2017 with a balanced education rooted in Islamic values, academic excellence, and the development of knowledge and character.",
+          "২০১৭ সাল থেকে হাটহাজারীতে ইসলামী মূল্যবোধ, শিক্ষার উৎকর্ষ, জ্ঞান ও চরিত্র গঠনের সমন্বয়ে সুষম শিক্ষাসেবা দিয়ে আসছি।",
         )}
       />
 
@@ -96,22 +96,22 @@ function About() {
           </p>
 
           <footer className="mt-6 text-lg font-bold text-primary">
-            {t("Maulana Ismail Khan", "মাওলানা ইসমাঈল খান সাহেব")}
+            {t("Mawlana Ismail Khan", "মাওলানা ইসমাঈল খান সাহেব")}
             <br />
             <span className="block text-xs font-normal text-muted-foreground whitespace-pre-line">
-  {t(
-    "Chief Advisor, Al Eman Islamic Academy\nSenior Teacher, Mekhal Hamiyus Sunnah Madrasah",
-    "প্রধান উপদেষ্টা, আল ঈমান ইসলামিক একাডেমি\nসিনিয়র শিক্ষক, মেখল হামিউস সুন্নাহ মাদ্রাসা"
-  )}
-</span>
+              {t(
+                "Chief Advisor, Al Eman Islamic Academy\nSenior Teacher, Mekhal Hamiyus Sunnah Madrasah",
+                "প্রধান উপদেষ্টা, আল ঈমান ইসলামিক একাডেমি\nসিনিয়র শিক্ষক, মেখল হামিউস সুন্নাহ মাদ্রাসা"
+              )}
+            </span>
           </footer>
         </blockquote>
       </Section>
 
       <Section muted>
         <SectionTitle
-          eyebrow={t("Principal's Message", "অধ্যক্ষের বাণী")}
-          title={t("A word from our Principal", "অধ্যক্ষের পক্ষ থেকে")}
+         eyebrow={t("Director's Message", "পরিচালকের বাণী")}
+         title={t("A word from our Director", "পরিচালকের পক্ষ থেকে")}
         />
         <blockquote className="mx-auto mt-8 max-w-3xl surface-card p-8 text-center">
           <p className="text-base md:text-lg leading-8 text-muted-foreground">
@@ -121,12 +121,12 @@ function About() {
             )}
           </p>
           <footer className="mt-6 text-lg font-bold text-primary">
-            {t("Mohammad Fokhruddin Babar", "মোহাম্মদ ফখরুদ্দিন বাবর")}<br />
-            <span className="block text-xs font-normal text-muted-foreground">{t("Principal", "অধ্যক্ষ")}</span>
+            {t("Mohammad Fokhruddin Babar", "মুহাম্মদ ফখরুদ্দিন বাবর")}<br />
+            <span className="block text-xs font-normal text-muted-foreground">{t("Founder & Director", "প্রতিষ্ঠাতা পরিচালক")}</span>
           </footer>
         </blockquote>
       </Section>
-
+              {/*
       <Section>
         <SectionTitle eyebrow={t("History", "ইতিহাস")} title={t("Our journey", "আমাদের পথচলা")} />
         <ol className="mx-auto mt-10 max-w-3xl border-l-2 border-primary/20 pl-6">
@@ -138,7 +138,7 @@ function About() {
             </li>
           ))}
         </ol>
-      </Section>
+      </Section>*/}
 
       <Section muted>
         <SectionTitle

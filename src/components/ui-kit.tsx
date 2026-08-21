@@ -34,8 +34,8 @@ export function PageHero({
   crumb: string;
 }) {
   return (
-    <section className="pattern-emerald">
-      <div className="container-page py-12 text-center sm:py-16">
+    <section className="border-b border-gold/60 bg-primary-deep">
+      <div className="container-page py-7.5 text-center sm:py-9">
         <nav aria-label="Breadcrumb" className="text-xs text-gold">
           <Link to="/" className="hover:underline">
             Home

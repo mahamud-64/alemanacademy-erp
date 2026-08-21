@@ -2412,12 +2412,32 @@ function Results() {
 
                 [
                   t(
+                    "Father's Name",
+                    "পিতার নাম",
+                  ),
+                  individualResult
+                    .student
+                    .father_name ??
+                    "X",
+                ],
+                [
+                  t(
                     "Student ID",
                     "স্টুডেন্ট আইডি",
                   ),
                   individualResult
                     .student
                     .student_id,
+                ],
+                [
+                  t(
+                    "Mother's Name",
+                    "মাতার নাম",
+                  ),
+                  individualResult
+                    .student
+                    .mother_name ??
+                    "X",
                 ],
 
                 [
@@ -2440,27 +2460,6 @@ function Results() {
                     .academicYear,
                 ],
 
-                [
-                  t(
-                    "Father's Name",
-                    "পিতার নাম",
-                  ),
-                  individualResult
-                    .student
-                    .father_name ??
-                    "X",
-                ],
-
-                [
-                  t(
-                    "Mother's Name",
-                    "মাতার নাম",
-                  ),
-                  individualResult
-                    .student
-                    .mother_name ??
-                    "X",
-                ],
               ].map(
                 ([label, value]) => (
                   <div

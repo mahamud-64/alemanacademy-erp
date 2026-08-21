@@ -2131,7 +2131,7 @@ export function PublishResultsManager() {
                     generatingFullPdf ||
                     !resultRows.length
                   }
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#006B4F] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#00563F] disabled:cursor-not-allowed disabled:opacity-50"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#00563F] disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <Printer className="h-4 w-4" />
 

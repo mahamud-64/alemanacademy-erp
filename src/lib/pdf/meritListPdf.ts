@@ -526,7 +526,7 @@ function buildMeritPrintDocument({
         14px;
 
       background:
-        #063528;
+        #74a597;
 
       color:
         #ffffff;

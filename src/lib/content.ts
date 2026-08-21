@@ -3,7 +3,6 @@ import { useLocalStore } from "@/lib/store";
 import { supabase } from "@/lib/supabase";
 import {
   defaultDownloads,
-  defaultNotices,
   defaultSettings,
   type DownloadDoc,
   type Notice,
@@ -59,7 +58,7 @@ function usePublicCollection<T extends { id: string }>(moduleId: string, fallbac
 
 /** Notices published from the admin panel (Admin → Notices). */
 export function useNotices() {
-  return usePublicCollection<Notice>("notices", defaultNotices);
+  return usePublicCollection<Notice>("notices", []);
 }
 
 /** Files published from the admin panel (Admin → Downloads). */

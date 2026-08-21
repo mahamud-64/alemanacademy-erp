@@ -63,7 +63,8 @@ export function Header() {
 
   const navLinkClass = (to: string) =>
     cn(
-      "rounded-full px-3 py-2 text-sm font-medium transition-colors",
+      "rounded-full py-2 text-sm font-medium transition-colors xl:whitespace-nowrap",
+      lang === "en" ? "px-2" : "px-3",
       pathname === to || (to !== "/" && pathname.startsWith(to))
         ? "bg-primary/10 text-primary"
         : "text-foreground/80 hover:bg-primary/5 hover:text-primary",
@@ -119,10 +120,10 @@ export function Header() {
           <Link to="/" className="flex items-center gap-3" aria-label={tb(school.name)}>
             <img src={logo} alt="" width={56} height={56} className="size-12 shrink-0 sm:size-14" />
             <span className="leading-tight">
-              <span className="block text-base font-bold text-primary sm:text-lg">
+              <span className="block text-base font-bold text-primary sm:text-lg sm:whitespace-nowrap">
                 {lang === "bn" ? settings.nameBn : settings.name}
               </span>
-              <span className="block text-xs text-muted-foreground font-bn">{school.name.bn}</span>
+              <span className="block text-xs text-muted-foreground font-bn">{lang === "bn" ? settings.name : settings.nameBn}</span>
             </span>
           </Link>
 
@@ -161,13 +162,14 @@ export function Header() {
             </button>
             <Link
               to="/login"
-              className="hidden rounded-full border border-primary px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/5 sm:inline-flex"
+              className="hidden items-center justify-center rounded-full border border-primary px-3.75 py-1.75 text-center text-sm font-semibold text-primary transition-colors hover:bg-primary/5 sm:inline-flex"
             >
               {t("Student Login", "স্টুডেন্ট লগইন")}
             </Link>
+
             <Link
               to="/admission"
-              className="hidden rounded-full bg-gold px-4 py-2 text-sm font-semibold text-gold-foreground transition-all hover:brightness-105 sm:inline-flex"
+              className="hidden items-center justify-center rounded-full bg-gold px-3.5 py-2 text-center text-sm font-semibold text-gold-foreground transition-all hover:brightness-105 sm:inline-flex"
             >
               {t("Apply Now", "আবেদন করুন")}
             </Link>

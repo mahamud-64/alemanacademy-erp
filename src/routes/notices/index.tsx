@@ -35,7 +35,7 @@ function NoticeBoard() {
     .filter((n) => category === "all" || n.category === category)
     .filter((n) => {
       const q = query.trim().toLowerCase();
-      return !q || tb(n.title).toLowerCase().includes(q) || tb(n.body).toLowerCase().includes(q);
+      return !q || (n.title ? tb(n.title).toLowerCase().includes(q) : false);
     })
     .sort((a, b) => Number(!!b.pinned) - Number(!!a.pinned) || b.date.localeCompare(a.date));
 
@@ -111,12 +111,22 @@ function NoticeBoard() {
                     <Badge tone="muted">{n.category}</Badge>
                     {n.pinned ? <Badge tone="gold">{t("Pinned", "পিন করা")}</Badge> : null}
                     {n.archived ? <Badge tone="muted">{t("Archived", "আর্কাইভড")}</Badge> : null}
-                    <span className="text-[11px] text-muted-foreground">#{n.id}</span>
+                    
                   </div>
-                  <h2 className="mt-2 text-base font-bold text-foreground">{tb(n.title)}</h2>
-                  <p className="mt-1.5 line-clamp-2 text-sm text-muted-foreground">{tb(n.body)}</p>
+                  <h2 className="mt-2 text-base font-bold text-foreground">
+                    {n.title ? tb(n.title) : t("Notice", "নোটিশ")}
+                  </h2>
+
+                  {n.image ? (
+                    <img
+                      src={n.image}
+                      alt={n.title ? tb(n.title) : t("Notice", "নোটিশ")}
+                      className="mt-3 max-h-64 w-auto max-w-full rounded-lg object-contain"
+                    />
+                  ) : null}
+
                   <span className="mt-3 inline-block text-xs font-semibold text-primary">
-                    {t("Read full notice →", "সম্পূর্ণ নোটিশ পড়ুন →")}
+                    {t("View full notice →", "সম্পূর্ণ নোটিশ দেখুন →")}
                   </span>
                 </div>
               </Link>

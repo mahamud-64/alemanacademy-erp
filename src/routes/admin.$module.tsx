@@ -1,4 +1,5 @@
-import TeacherAccess from "@/pages/admin/TeacherAccess";
+import { NoticeForm } from "@/components/admin/NoticeForm";
+import { useCollection } from "@/lib/admin/store";
 import { MarksEntry } from "@/components/admin/MarksEntry";
 import { ExamManager } from "@/components/admin/ExamManager";
 import { EnrollmentManager } from "@/components/admin/EnrollmentManager";
@@ -7,6 +8,7 @@ import { getModule } from "@/lib/admin/registry";
 import { CrudModule } from "@/components/admin/CrudModule";
 import { useLang } from "@/lib/i18n";
 import { PublishResultsManager } from "@/components/admin/PublishResultsManager";
+import TeacherAccess from "@/pages/admin/TeacherAccess";
 import SlidingNews from "@/pages/admin/SlidingNews";
 export const Route = createFileRoute("/admin/$module")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -27,6 +29,66 @@ const filterByAction: Record<string, string> = {
   sections: "all",
   merit: "all",
 };
+
+function NoticeCreate({
+  onClose,
+}: {
+  onClose: () => void;
+}) {
+  const mod = getModule("notices")!;
+  const { create } = useCollection(mod);
+
+  const handleSave = async (notice: {
+    title: {
+      en: string;
+      bn: string;
+    };
+    category: string;
+    date: string;
+    image: string;
+  }) => {
+    await create({
+      title: notice.title,
+      category: notice.category,
+      date: notice.date,
+      image: notice.image,
+    });
+
+    onClose();
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+      <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-card p-6 shadow-2xl">
+        <div className="mb-5 flex items-center justify-between">
+          <div>
+            <h2 className="text-lg font-bold text-foreground">
+              Add new — Notices
+            </h2>
+
+            <p className="mt-1 text-xs text-muted-foreground">
+              Publish and manage notice board items.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-full p-2 text-muted-foreground hover:bg-muted hover:text-foreground"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+
+        <NoticeForm
+          onSave={handleSave}
+          onCancel={onClose}
+        />
+      </div>
+    </div>
+  );
+}
 
 function ModulePage() {
   const { module } = Route.useParams();
@@ -63,14 +125,22 @@ function ModulePage() {
         ) : mod.id === "marks" ? (
           <MarksEntry />
         ) : (
-        <CrudModule
-          key={`${mod.id}-${action ?? ""}`}
-          mod={mod}
-          autoCreate={action === "new"}
-          {...(initialFilter && initialFilter !== "all"
-            ? { initialFilter }
-            : {})}
-        />
+        <>
+          <CrudModule
+            key={`${mod.id}-${action ?? ""}`}
+            mod={mod}
+            autoCreate={mod.id === "notices" ? false : action === "new"}
+            {...(initialFilter && initialFilter !== "all"
+              ? { initialFilter }
+              : {})}
+          />
+
+          {mod.id === "notices" && action === "new" ? (
+            <NoticeCreate
+              onClose={() => window.history.back()}
+            />
+          ) : null}
+        </>
       )}
     </div>
   );

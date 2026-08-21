@@ -1,7 +1,6 @@
 import type { Bi } from "@/lib/i18n";
 import {
   defaultDownloads,
-  defaultNotices,
   galleryItems,
   portalStudents,
   teachers as teacherSeed,
@@ -12,7 +11,7 @@ import {
  * real backend (Supabase / Firebase / REST) can later replace `useCollection`
  * without touching any UI component.
  */
-export type FieldType = "text" | "textarea" | "number" | "date" | "select" | "bi";
+export type FieldType = "text" | "textarea" | "number" | "date" | "select" | "bi" | "image";
 
 export type ModuleField = {
   key: string;
@@ -367,13 +366,20 @@ export const modules: ModuleDef[] = [
     storageKey: "aeia.notices",
     fields: [
       f("title", "Title", "শিরোনাম", "bi", { required: true }),
-      f("category", "Category", "ক্যাটাগরি", "select", { options: ["general", "exam", "admission", "event", "holiday"] }),
+
+      f("category", "Category", "ক্যাটাগরি", "select", {
+        options: ["general", "exam", "admission", "event", "holiday"],
+      }),
+
       f("date", "Date", "তারিখ", "date"),
-      f("body", "Body", "বিবরণ", "bi"),
+
+      f("image", "Notice Image", "নোটিশের ছবি", "image", {
+        required: true,
+      }),
     ],
     columns: ["title", "category", "date"],
     filterKey: "category",
-    seed: defaultNotices as unknown as AdminRecord[],
+    seed: [],
   },
   {
     id: "sliding-news",

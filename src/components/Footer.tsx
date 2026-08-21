@@ -18,6 +18,7 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-3">
             <img src={logo} alt="" width={48} height={48} loading="lazy" className="size-12" />
+            
             <span className="leading-tight">
               <span className="block font-bold">{lang === "bn" ? settings.nameBn : settings.name}</span>
               <span className="block text-xs text-primary-foreground/70 font-bn">{school.name.bn}</span>
@@ -157,9 +158,9 @@ export function Footer() {
         <div className="container-page flex flex-col items-center justify-between gap-2 py-5 text-xs text-primary-foreground/65 sm:flex-row">
           <p>
             © {new Date().getFullYear()} {lang === "bn" ? settings.nameBn : settings.name}.{" "}
-            {t("All rights reserved.", "সর্বস্বত্ব সংরক্ষিত।")}
+            {t("All rights reserved.", "All rights reserved")}
           </p>
-          <p>{t("Designed for excellence in Deen and Dunya.", "দ্বীন ও দুনিয়ার শ্রেষ্ঠত্বের জন্য নিবেদিত।")}</p>
+          <p>{t("Designed for excellence in Deen and Dunya.", "Designed for excellence in Deen and Dunya.")}</p>
         </div>
       </div>
     </footer>

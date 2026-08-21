@@ -36,6 +36,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { NoticeForm } from "@/components/admin/NoticeForm";
 import { cn } from "@/lib/utils";
 
 const PAGE_SIZE = 8;
@@ -281,17 +282,56 @@ export function CrudModule({
   const visible = filtered.slice((current - 1) * PAGE_SIZE, current * PAGE_SIZE);
 
   const openCreate = () => {
-  setEditing(null);
-  setDraft(emptyDraft(mod.fields));
-  setStudentPhotoFile(null);
-  setStudentPhotoPreview("");
-  setPendingSave(false);
-  if (mod.id === "students") {
-    void loadStudentRows();
-  }
-  setOpen(true);
-};
+    setEditing(null);
+    setDraft(emptyDraft(mod.fields));
+    setStudentPhotoFile(null);
+    setStudentPhotoPreview("");
+    setPendingSave(false);
+    if (mod.id === "students") {
+      void loadStudentRows();
+    }
+    setOpen(true);
+  };
+  const handleNoticeSave = async (notice: {
+    title: {
+      en: string;
+      bn: string;
+    };
+    category: string;
+    date: string;
+    image: string;
+  }) => {
+    setSubmitting(true);
 
+    try {
+      await create({
+        title: notice.title,
+        category: notice.category,
+        date: notice.date,
+        image: notice.image,
+      });
+
+      toast.success(
+        t(
+          "Notice published successfully.",
+          "নোটিশ সফলভাবে প্রকাশিত হয়েছে।",
+        ),
+      );
+
+      setOpen(false);
+    } catch (error) {
+      console.error("Notice save error:", error);
+
+      toast.error(
+        t(
+          "Unable to publish notice.",
+          "নোটিশ প্রকাশ করা যায়নি।",
+        ),
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  };
   const openEdit = async (row: AdminRecord) => {
     if (mod.id !== "students") {
       setEditing(row);
@@ -1016,7 +1056,12 @@ export function CrudModule({
             </DialogTitle>
             <DialogDescription>{tb(mod.description)}</DialogDescription>
           </DialogHeader>
-          {mod.id === "students" ? (
+          {mod.id === "notices" && !editing ? (
+            <NoticeForm
+              onSave={(notice) => void handleNoticeSave(notice)}
+              onCancel={() => setOpen(false)}
+            />
+          ) : mod.id === "students" ? (
   <div className="space-y-6">
     {/* PHOTO */}
     <section className="rounded-2xl border border-primary/10 bg-primary/[0.02] p-5">
@@ -1542,18 +1587,20 @@ export function CrudModule({
     })}
   </div>
 )}
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setOpen(false)} disabled={submitting}>
-              {t("Cancel", "বাতিল")}
-            </Button>
-            <Button onClick={() => void submit()} disabled={submitting}>
-              {submitting
-                ? t("Saving…", "সংরক্ষণ হচ্ছে…")
-                : editing
-                  ? t("Save changes", "সংরক্ষণ")
-                  : t("Create", "তৈরি করুন")}
-            </Button>
-          </DialogFooter>
+          {mod.id !== "notices" ? (
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setOpen(false)} disabled={submitting}>
+                {t("Cancel", "বাতিল")}
+              </Button>
+              <Button onClick={() => void submit()} disabled={submitting}>
+                {submitting
+                  ? t("Saving…", "সংরক্ষণ হচ্ছে…")
+                  : editing
+                    ? t("Save changes", "সংরক্ষণ")
+                    : t("Create", "তৈরি করুন")}
+              </Button>
+            </DialogFooter>
+          ) : null}
         </DialogContent>
       </Dialog>
 

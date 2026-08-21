@@ -74,7 +74,7 @@ function NoticeDetails() {
             <span className="text-xs text-muted-foreground">
               {new Date(notice.date).toLocaleDateString("en-GB", { day: "2-digit", month: "long", year: "numeric" })}
             </span>
-            <span className="text-xs text-muted-foreground">· #{notice.id}</span>
+           
           </div>
 
           <h1 className="mt-3 text-2xl font-bold leading-snug text-foreground sm:text-3xl">{tb(notice.title)}</h1>
@@ -93,28 +93,29 @@ function NoticeDetails() {
               <Share2 className="size-3.5" aria-hidden /> {copied ? t("Link copied", "লিংক কপি হয়েছে") : t("Share", "শেয়ার")}
             </button>
             <button
-              onClick={() =>
-                downloadPdf(`notice-${notice.id}`, notice.title.en, [
-                  { text: `Notice No: ${notice.id}   Date: ${notice.date}`, size: 10, gap: 24 },
-                  ...wrapText(notice.body.en, 92).map((line) => ({ text: line })),
-                  { text: "", size: 10 },
-                  { text: "Al Eman Islamic Academy, Chattogram", size: 10, bold: true },
-                ])
-              }
+              onClick={() => window.print()}
               className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground hover:bg-primary-deep"
             >
-              <Download className="size-3.5" aria-hidden /> {t("Download PDF", "পিডিএফ ডাউনলোড")}
+              <Download className="size-3.5" aria-hidden />
+              {t("Download / Print", "ডাউনলোড / প্রিন্ট")}
             </button>
           </div>
 
-          <div className="mt-7 surface-card p-7">
-            <p className="whitespace-pre-line text-sm leading-7 text-foreground/85">{tb(notice.body)}</p>
-            <p className="mt-8 text-sm font-semibold text-primary">
-              {t("Principal", "অধ্যক্ষ")}
-              <span className="block text-xs font-normal text-muted-foreground">
-                {t("Al Eman Islamic Academy", "আল ঈমান ইসলামিক একাডেমি")}
-              </span>
-            </p>
+          <div className="mt-7 surface-card p-4 sm:p-6">
+            {notice.image ? (
+              <img
+                src={notice.image}
+                alt={tb(notice.title)}
+                className="mx-auto h-auto max-w-full rounded-lg object-contain"
+              />
+            ) : (
+              <div className="py-12 text-center text-sm text-muted-foreground">
+                {t(
+                  "Notice image is not available.",
+                  "নোটিশের ছবি পাওয়া যায়নি।",
+                )}
+              </div>
+            )}
           </div>
         </article>
 
