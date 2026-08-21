@@ -16,7 +16,7 @@ import { useLang } from "@/lib/i18n";
 import { school, academicSections, achievements } from "@/data/site";
 import { useNotices, useSettings } from "@/lib/content";
 import { Section, SectionTitle, Badge } from "@/components/ui-kit";
-
+import { SlidingNewsTicker } from "@/components/SlidingNewsTicker";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -97,15 +97,7 @@ function Home() {
         </div>
       </section>
 
-      {/* Marquee */}
-      <div className="border-y border-border bg-gold/15">
-        <div className="container-page flex items-center gap-3 overflow-hidden py-2.5 text-sm">
-          <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
-            <Megaphone className="size-3.5" aria-hidden /> {t("Latest", "সর্বশেষ")}
-          </span>
-          <p className="truncate text-foreground/80">{lang === "bn" ? settings.marqueeBn : settings.marquee}</p>
-        </div>
-      </div>
+      <SlidingNewsTicker />
 
       {/* Quick links */}
       <div className="container-page -mt-0 grid grid-cols-2 gap-4 py-10 sm:grid-cols-4">

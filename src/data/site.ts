@@ -149,6 +149,21 @@ export const defaultNotices: Notice[] = [
   },
 ];
 
+export const defaultSettings: SiteSettings = {
+  name: school.name.en,
+  nameBn: school.name.bn,
+  tagline: school.tagline.en,
+  taglineBn: school.tagline.bn,
+  phone: school.phone,
+  email: school.email,
+  address: school.address.en,
+  admissionOpen: true,
+
+  // Keep these for compatibility with the existing settings system
+  marquee: "Second Term Exam routine published · Results available online",
+  marqueeBn:
+    "দ্বিতীয় সাময়িকপরীক্ষার রুটিন প্রকাশিত · অনলাইনে ফলাফল দেখুন",
+};
 /* --------------------------------- Downloads -------------------------------- */
 
 export type DownloadDoc = {
@@ -652,26 +667,67 @@ export const academicSections = [
 
 export const teachers = [
   {
-    name: { en: "Mohammed Fakhruddin Babar", bn: "মোহাম্মদ ফখরুদ্দিন বাবর" },
-    role: { en: "Principal", bn: "অধ্যক্ষ" },
+    name: { en: "Mohammed Fakhruddin Babar", bn: "মুহাম্মদ ফখরুদ্দিন বাবর" },
+    role: { en: "Founder & Director", bn: "প্রতিষ্ঠাতা পরিচালক" },
     detail: { en: "M.B.A.", bn: "এম.বি.এ." },
   },
   {
-    name: { en: "Mr A", bn: "A" },
-    role: { en: "English", bn: "ইংরেজি" },
-    detail: { en: "English Literature", bn: "ইংরেজি সাহিত্যে " },
+    name: { en: "Md. Kurshedul Alam", bn: "মো: খুরশেদুল আলম" },
+    role: { en: "Senior Teacher", bn: "সিনিয়র শিক্ষক" },
+    detail: { en: "English, Mathematics & BGS", bn: "ইংরেজি, গণিত ও বাংলাদেশ ও বিশ্বপরিচয়" },
   },
   {
-    name: { en: "Mr. B", bn: "B" },
-    role: { en: "Senior Teacher, Mathematics", bn: "সিনিয়র শিক্ষক, গণিত" },
-    detail: { en: "M.Sc. in Mathematics", bn: "গণিতে এম.এস-সি." },
+    name: { en: "Md. Hossain", bn: "মো: হোসাইন" },
+    role: { en: "Senior Teacher", bn: "সিনিয়র শিক্ষক" },
+    detail: { en: "Bangla & English", bn: "বাংলা ও ইংরেজি" },
   },
   {
-    name: { en: "Hafez", bn: "হাফেজ" },
-    role: { en: "Hifz & Qirat Instructor", bn: "হিফজ ও কিরাত শিক্ষক" },
-    detail: { en: "Hafez-e-Qur'an", bn: "হাফেজে কুরআন" },
+    name: { en: "Md. Zakerul Islam", bn: "মো: জাকেরুল ইসলাম" },
+    role: { en: "Senior Teacher", bn: "সিনিয়র শিক্ষক" },
+    detail: { en: "English, Mathematics, Arabic & Bangla", bn: "ইংরেজি, গণিত, আরবি ও বাংলা" },
+  },
+  {
+    name: { en: "Md. Saif", bn: "মো: সাইফ" },
+    role: { en: "Teacher", bn: "শিক্ষক" },
+    detail: { en: "Bangla", bn: "বাংলা" },
+  },
+  {
+    name: { en: "Md. Najmul Huaq", bn: "মো: নাজমুল হক" },
+    role: { en: "Teacher", bn: "শিক্ষক" },
+    detail: { en: "Arabic, Bangla & English", bn: "আরবি, বাংলা ও ইংরেজি" },
+  },
+  {
+    name: { en: "Md. Sirajul Munir", bn: "মো: সিরাজুল মুনির" },
+    role: { en: "Teacher", bn: "শিক্ষক" },
+    detail: { en: "Bangla, English & Mathematics", bn: "বাংলা, ইংরেজি ও গণিত" },
+  },
+  {
+    name: { en: "Md. Maruf Hossain", bn: "মো: মারুফ হোসাইন" },
+    role: { en: "Teacher", bn: "শিক্ষক" },
+    detail: { en: "General Knowledge, BGS & Science", bn: "সাধারণ জ্ঞান, বাংলাদেশ ও বিশ্বপরিচয় ও বিজ্ঞান" },
+  },
+  {
+    name: { en: "Mst. Naima", bn: "মোছা: নাঈমা" },
+    role: { en: "Teacher — Girls Department", bn: "শিক্ষিকা — বালিকা বিভাগ" },
+    detail: { en: "Arabic ", bn: "আরবি" },
+  },
+  {
+    name: { en: "Mst. Shanta", bn: "মোছা: শান্তা" },
+    role: { en: "Teacher — Girls Department", bn: "শিক্ষিকা — বালিকা বিভাগ" },
+    detail: { en: "Mathematics, English & BGS", bn: "গণিত, ইংরেজি ও বাংলাদেশ ও বিশ্বপরিচয়" },
+  },
+  {
+    name: { en: "Hafeez Mawlana Osama", bn: "হাফেজ মাওলানা উসামা" },
+    role: { en: "Hifz Instructor", bn: "হিফজ শিক্ষক" },
+    detail: { en: "Hifz Department", bn: "হিফজ বিভাগ" },
+  },
+  {
+    name: { en: "Hafeez Mawlana Nayeem Uddin", bn: "হাফেজ মাওলানা নাঈম উদ্দিন" },
+    role: { en: "Hifz Instructor", bn: "হিফজ শিক্ষক" },
+    detail: { en: "Hifz Department", bn: "হিফজ বিভাগ" },
   },
 ];
+
 
 export const achievements = [
     {
@@ -918,15 +974,3 @@ export type SiteSettings = {
   marqueeBn: string;
 };
 
-export const defaultSettings: SiteSettings = {
-  name: school.name.en,
-  nameBn: school.name.bn,
-  tagline: school.tagline.en,
-  taglineBn: school.tagline.bn,
-  phone: school.phone,
-  email: school.email,
-  address: school.address.en,
-  admissionOpen: true,
-  marquee: "Second Term Exam routine published · Results available online",
-  marqueeBn: "দ্বিতীয় সাময়িকপরীক্ষার রুটিন প্রকাশিত · অনলাইনে ফলাফল দেখুন",
-};

@@ -23,6 +23,16 @@ type SearchHit = { title: string; to: string; group: string };
 export function Header() {
   const { lang, setLang, t, tb } = useLang();
   const { value: settings } = useSettings();
+  const siteSettings = settings ?? {
+  name: school.name.en,
+  nameBn: school.name.bn,
+  tagline: school.tagline.en,
+  taglineBn: school.tagline.bn,
+  phone: school.phone,
+  email: school.email,
+  address: school.address.en,
+  admissionOpen: true,
+};
   const { value: notices } = useNotices();
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);

@@ -123,7 +123,7 @@ export const adminNav: AdminNavGroup[] = [
     items: [
       { label: bi("Manage Notices", "নোটিশ ব্যবস্থাপনা"), module: "notices" },
       { label: bi("Publish Notice", "নোটিশ প্রকাশ"), module: "notices", action: "new" },
-      { label: bi("Sliding News", "চলমান বার্তা"), module: "new" },
+      { label: bi("Sliding News", "স্লাইডিং নিউজ",),module: "sliding-news",},
     ],
   },
   {

@@ -376,6 +376,32 @@ export const modules: ModuleDef[] = [
     seed: defaultNotices as unknown as AdminRecord[],
   },
   {
+    id: "sliding-news",
+
+    title: bi(
+      "Sliding News",
+      "স্লাইডিং নিউজ",
+    ),
+
+    group: bi(
+      "Notices",
+      "নোটিশ",
+    ),
+
+    description: bi(
+      "Manage the announcements displayed in the homepage scrolling news ticker.",
+      "হোমপেজের চলমান নিউজ টিকারে প্রদর্শিত ঘোষণা পরিচালনা করুন।",
+    ),
+
+    storageKey: "sliding_news",
+
+    fields: [],
+
+    columns: [],
+
+    seed: [],
+  },
+  {
     id: "downloads",
     title: bi("Downloads", "ডাউনলোড"),
     group: bi("Downloads", "ডাউনলোড"),

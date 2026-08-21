@@ -173,3 +173,23 @@
     background: #fff;
   }
 }
+@keyframes sliding-news-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.sliding-news-track {
+  display: flex;
+  width: max-content;
+  animation: sliding-news-scroll 35s linear infinite;
+  will-change: transform;
+}
+
+.sliding-news-track:hover {
+  animation-play-state: paused;
+}

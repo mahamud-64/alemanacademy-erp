@@ -7,6 +7,7 @@ import { getModule } from "@/lib/admin/registry";
 import { CrudModule } from "@/components/admin/CrudModule";
 import { useLang } from "@/lib/i18n";
 import { PublishResultsManager } from "@/components/admin/PublishResultsManager";
+import SlidingNews from "@/pages/admin/SlidingNews";
 export const Route = createFileRoute("/admin/$module")({
   validateSearch: (search: Record<string, unknown>) => ({
     action: typeof search["action"] === "string" ? (search["action"] as string) : undefined,
@@ -49,8 +50,9 @@ function ModulePage() {
   return (
     <div className="space-y-4">
   
-
-     {mod.id === "teacher-access" ? (
+        {mod.id === "sliding-news" ? (
+          <SlidingNews />
+        ):mod.id === "teacher-access" ? (
           <TeacherAccess />
         ) : mod.id === "enrollment" ? (
           <EnrollmentManager />

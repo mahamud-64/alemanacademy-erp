@@ -135,25 +135,23 @@ export function Footer() {
           </form>
         </div>
       </div>
-      
+        {/* CENTERED DEVELOPER CREDIT */}
+      <div className="flex justify-center px-4 pb-8 text-center lg:-translate-y-[5mm]">
+        <a
+          href="/developer"
+        // target="_blank"
+        // rel="noreferrer"
+          className="inline-block cursor-pointer text-center transition-opacity hover:opacity-80"
+        >
+          <span className="block text-sm font-semibold text-gold underline underline-offset-4">
+            Designed &amp; Developed by Al Mahamud
+          </span>
 
-  {/* CENTERED DEVELOPER CREDIT */}
-  <div className="flex justify-center px-4 pb-8 text-center lg:-translate-y-[5mm]">
-<a
-  href="/developer"
- // target="_blank"
- // rel="noreferrer"
-  className="inline-block cursor-pointer text-center transition-opacity hover:opacity-80"
->
-  <span className="block text-sm font-semibold text-gold underline underline-offset-4">
-    Designed &amp; Developed by Al Mahamud
-  </span>
-
-  <span className="mt-1 block text-xs text-primary-foreground/65">
-    Web Development • UI/UX • System Design
-  </span>
-</a>
-  </div>
+          <span className="mt-1 block text-xs text-primary-foreground/65">
+            Web Development • UI/UX • System Design
+          </span>
+        </a>
+      </div>
 
       <div className="border-t border-primary/30">
         <div className="container-page flex flex-col items-center justify-between gap-2 py-5 text-xs text-primary-foreground/65 sm:flex-row">
