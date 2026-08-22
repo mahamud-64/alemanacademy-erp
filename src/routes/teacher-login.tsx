@@ -380,8 +380,8 @@ function TeacherLogin() {
           "শিক্ষক লগইন",
         )}
         subtitle={t(
-          "Sign in with the common teacher account to access mark entry.",
-          "সাধারণ শিক্ষক অ্যাকাউন্ট দিয়ে লগইন করে নম্বর এন্ট্রিতে প্রবেশ করুন।",
+          "Log in with your teacher account to access the portal.",
+          "আপনার শিক্ষক অ্যাকাউন্ট দিয়ে লগইন করে পোর্টালে প্রবেশ করুন।",
         )}
       />
 
@@ -405,8 +405,8 @@ function TeacherLogin() {
 
               <p className="mt-1 text-sm text-muted-foreground">
                 {t(
-                  "Mark Entry Access",
-                  "নম্বর এন্ট্রি অ্যাক্সেস",
+                  "Secure access for authorized teachers",
+                  "শিক্ষকদের জন্য সুরক্ষিত লগইন ব্যবস্থা",
                 )}
               </p>
             </div>
@@ -517,8 +517,8 @@ function TeacherLogin() {
 
             <p className="mt-5 text-center text-xs text-muted-foreground">
               {t(
-                "Use the common teacher account provided by the administrator.",
-                "প্রশাসকের দেওয়া সাধারণ শিক্ষক অ্যাকাউন্ট ব্যবহার করুন।",
+                "Use the teacher account provided by the administrator.",
+                "প্রশাসকের দেওয়া শিক্ষক অ্যাকাউন্ট ব্যবহার করুন।",
               )}
             </p>
           </form>
