@@ -73,11 +73,6 @@ export function Footer() {
                 {t("Student Portal", "স্টুডেন্ট পোর্টাল")}
               </Link>
             </li>
-            <li>
-              <Link to="/admin" className="hover:text-gold">
-                {t("Admin Panel", "অ্যাডমিন প্যানেল")}
-              </Link>
-            </li>
           </ul>
         </nav>
         </div>

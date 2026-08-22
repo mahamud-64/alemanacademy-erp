@@ -41,17 +41,23 @@ function Login() {
 
   return (
     <Section>
+ 
       <div className="mx-auto max-w-md text-center">
+      
         <p className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
           <ShieldCheck className="size-4" aria-hidden /> {t("Student Portal", "স্টুডেন্ট পোর্টাল")}
         </p>
         <h1 className="mt-3 text-3xl font-bold text-foreground">{t("Secure Student Login", "নিরাপদ স্টুডেন্ট লগইন")}</h1>
-        <p className="mt-3 text-sm text-muted-foreground">
+        {/*<p className="mt-3 text-sm text-muted-foreground">
           {t("Check results, routine, attendance, fees and more.", "ফলাফল, রুটিন, উপস্থিতি, বেতনসহ আরও অনেক কিছু দেখুন।")}{" "}
-
-        </p>
+        </p>*/}
+            <p className="mt-3  text-lg font-semibold text-red-600 dark:text-red-400">
+            {t(
+              "This feature is currently unavailable. Please check back later.",
+              "এই ফিচারটি বর্তমানে উপলব্ধ নয়। অনুগ্রহ করে পরে আবার চেষ্টা করুন।"
+            )}
+          </p>
       </div>
-
       <form onSubmit={onSubmit} className="mx-auto mt-10 max-w-sm surface-card p-7">
         <img src={logo} alt="" width={56} height={56} loading="lazy" className="mx-auto size-12" />
         <div className="mt-6 grid gap-5">
