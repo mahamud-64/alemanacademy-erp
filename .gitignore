@@ -38,3 +38,4 @@ dist-ssr
 # Build output
 dist
 .dist
+AGENTS.md
