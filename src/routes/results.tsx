@@ -2913,7 +2913,7 @@ function Results() {
             {/* LEADERBOARD RESULT */}
 
             {resultRows.length ? (
-              <div className="results-print-area mt-6 overflow-hidden rounded-2xl border border-[#006B4F]/15 bg-white shadow-lg">
+              <div className="results-print-area mt-6 min-w-0 overflow-hidden rounded-2xl border border-[#006B4F]/15 bg-white shadow-lg">
 
                 <div className="flex flex-col gap-4 bg-[#006B4F] px-5 py-6 text-white sm:px-6 md:flex-row md:items-center md:justify-between">
                   <div>
@@ -2957,7 +2957,7 @@ function Results() {
                   </button>
                 </div>
 
-                <div className="overflow-x-auto">
+                <div className="w-full min-w-0 overflow-x-auto overscroll-x-contain">
                   <table className="w-full min-w-[680px]">
                     <thead className="bg-[#EEF7F2] text-[#00563F]">
                       <tr>
