@@ -2706,14 +2706,14 @@ function Results() {
             Phone: selected panel only
         ==================================================== */}
 
-        <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2">
+        <div className="mx-auto grid min-w-0 max-w-7xl gap-6 lg:grid-cols-2">
 
           {/* ==================================================
               LEADERBOARD PANEL
           ================================================== */}
 
           <div
-            className={`${
+            className={`min-w-0 ${
               activeView === "leaderboard"
                 ? "block"
                 : "hidden lg:block"
