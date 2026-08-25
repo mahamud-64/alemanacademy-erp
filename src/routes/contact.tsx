@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, Phone, Clock, Facebook, Youtube, MessageCircle } from "lucide-react";
 import { z } from "zod";
+import emailjs from "@emailjs/browser";
 import { useLang } from "@/lib/i18n";
 import { school } from "@/data/site";
 import { useSettings } from "@/lib/content";
@@ -35,20 +36,74 @@ function Contact() {
   const { value: settings } = useSettings();
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+  ) => {
     e.preventDefault();
-    const parsed = contactSchema.safeParse(Object.fromEntries(new FormData(e.currentTarget)));
+
+    const form = e.currentTarget;
+
+    const parsed = contactSchema.safeParse(
+      Object.fromEntries(new FormData(form)),
+    );
+
     if (!parsed.success) {
       const next: Record<string, string> = {};
-      for (const issue of parsed.error.issues) next[String(issue.path[0])] = issue.message;
+
+      for (const issue of parsed.error.issues) {
+        next[String(issue.path[0])] = issue.message;
+      }
+
       setErrors(next);
       return;
     }
+
     setErrors({});
-    setSent(true);
-    // Backend hook: POST parsed.data to /api/contact when the server is connected.
-    e.currentTarget.reset();
+    setSent(false);
+    setSending(true);
+
+    try {
+      await emailjs.send(
+        "service_r1kn7go",
+        "template_iooyo98",
+        {
+          name: parsed.data.name,
+          email: parsed.data.email,
+          subject: parsed.data.subject,
+          message: parsed.data.message,
+        },
+        "MT21jqSAF5CgYh90D",
+      );
+      await emailjs.send(
+        "service_r1kn7go",
+        "template_uu41f17",
+        {
+          name: parsed.data.name,
+          email: parsed.data.email,
+          subject: parsed.data.subject,
+        },
+        "MT21jqSAF5CgYh90D",
+      );
+
+      setSent(true);
+      form.reset();
+    }catch (error) {
+      console.error(
+        "Contact form error:",
+        error,
+      );
+
+      setErrors({
+        form: t(
+          "Unable to send your message. Please try again.",
+          "বার্তাটি পাঠানো যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।",
+        ),
+      });
+    } finally {
+      setSending(false);
+    }
   };
 
   const details = [
@@ -108,6 +163,11 @@ function Contact() {
                 {t("Thank you — your message has been received.", "ধন্যবাদ — আপনার বার্তা গৃহীত হয়েছে।")}
               </div>
             ) : null}
+            {errors["form"] ? (
+              <div className="mt-5 rounded-lg bg-destructive/10 p-4 text-sm text-destructive">
+                {errors["form"]}
+              </div>
+            ) : null}
             <form onSubmit={onSubmit} className="mt-6 grid gap-5" noValidate>
               <Field label={t("Your Name", "আপনার নাম")} hint={errors["name"]}>
                 <input name="name" maxLength={100} required className={inputClass} />
@@ -121,8 +181,20 @@ function Contact() {
               <Field label={t("Message", "বার্তা")} hint={errors["message"]}>
                 <textarea name="message" rows={5} maxLength={1000} required className={inputClass} />
               </Field>
-              <ActionButton type="submit" className="py-3">
-                {t("Send Message", "বার্তা পাঠান")}
+              <ActionButton
+                type="submit"
+                disabled={sending}
+                className="py-3"
+              >
+                {sending
+                  ? t(
+                      "Sending...",
+                      "পাঠানো হচ্ছে...",
+                    )
+                  : t(
+                      "Send Message",
+                      "বার্তা পাঠান",
+                    )}
               </ActionButton>
             </form>
           </div>

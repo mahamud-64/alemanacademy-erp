@@ -17,6 +17,7 @@ import { school, academicSections, achievements } from "@/data/site";
 import { useNotices, useSettings } from "@/lib/content";
 import { Section, SectionTitle, Badge } from "@/components/ui-kit";
 import { SlidingNewsTicker } from "@/components/SlidingNewsTicker";
+import { link } from "fs";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -43,11 +44,13 @@ function Home() {
   const latest = notices.filter((n) => !n.archived).slice(0, 4);
 
   const stats = [
-
+ 
   {
     value: { en: "12", bn: "১২" },
+    
     label: { en: "Teachers", bn: "শিক্ষক" },
     icon: GraduationCap,
+    
   },
   {
     value: { en: "4", bn: "৪" },
@@ -279,7 +282,7 @@ function Home() {
         </div>
       </Section> */}
 
-      {/* CTA */}
+      {/* CTA 
       <section className="pattern-emerald">
         <div className="container-page flex flex-col items-center gap-6 py-14 text-center">
           <img src={logo} alt="" width={72} height={72} loading="lazy" className="size-16" />
@@ -299,7 +302,7 @@ function Home() {
             {t("Start Application", "আবেদন শুরু করুন")} <ArrowRight className="size-4" aria-hidden />
           </Link>
         </div>
-      </section>
+      </section>*/}
     </>
   );
 }
