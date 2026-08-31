@@ -4,8 +4,7 @@ import { CheckCircle2, ChevronDown, Upload, User } from "lucide-react";
 import { z } from "zod";
 import { supabase } from "@/lib/supabase";
 import { useLang } from "@/lib/i18n";
-import { defaultDownloads } from "@/data/site";
-import { DocCard } from "@/components/DocCard";
+
 
 import {
   ActionButton,
@@ -1101,18 +1100,7 @@ const guardianRelations = [
   "দাদি",
   "অন্যান্য",
 ];
-const admissionDoc = defaultDownloads.find(
-  (doc) => doc.id === "admission-form",
-)!;
 
-
-const feeDoc = defaultDownloads.find(
-  (doc) => doc.id === "fee-structure",
-)!;
-
-const prospectus = defaultDownloads.find(
-  (doc) => doc.id === "prospectus",
-)!;
 
 
 /* -------------------------------------------------------
@@ -4352,45 +4340,6 @@ const [photoFile, setPhotoFile] = useState<File | null>(null);
         </div>
       </Section>
    */}
-      {/* ---------------------------------------------------
-         Documents
-      --------------------------------------------------- */}
-
-      <Section muted>
-        <SectionTitle
-          eyebrow={t(
-            "Documents",
-            "ডকুমেন্ট",
-          )}
-          title={t(
-            "Admission documents",
-            "ভর্তি সংক্রান্ত ডকুমেন্ট",
-          )}
-        />
-
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <DocCard doc={admissionDoc} />
-          <DocCard doc={feeDoc} />
-          <DocCard doc={prospectus} />
-        </div>
-
-        <p className="mt-8 text-center text-sm text-muted-foreground">
-          {t(
-            "Questions about admission?",
-            "ভর্তি নিয়ে প্রশ্ন আছে?",
-          )}{" "}
-
-          <Link
-            to="/contact"
-            className="font-semibold text-primary hover:underline"
-          >
-            {t(
-              "Contact our office",
-              "আমাদের অফিসে যোগাযোগ করুন",
-            )}
-          </Link>
-        </p>
-      </Section>
     </>
   );
 }

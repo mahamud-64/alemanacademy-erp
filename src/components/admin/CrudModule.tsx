@@ -875,7 +875,20 @@ export function CrudModule({
   };
 
   const columnLabel = (key: string) => {
-    const field = mod.fields.find((x) => x.key === key);
+    if (mod.id === "fees") {
+      if (key === "fee_head") {
+        return t("Fee", "ফি");
+      }
+
+      if (key === "is_active") {
+        return t("Status", "অবস্থা");
+      }
+    }
+
+    const field = mod.fields.find(
+      (x) => x.key === key,
+    );
+
     return field ? tb(field.label) : key;
   };
 

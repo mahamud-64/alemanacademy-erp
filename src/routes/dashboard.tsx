@@ -4,9 +4,8 @@ import { LogOut } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { useStudentAuth } from "@/lib/auth";
 import { resultsDb } from "@/data/site";
-import { useNotices, useDownloads } from "@/lib/content";
 import { Marksheet } from "@/components/Marksheet";
-import { DocCard } from "@/components/DocCard";
+
 import { Badge, Section, inputClass } from "@/components/ui-kit";
 import { routineDays, routinePeriods } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -18,7 +17,7 @@ export const Route = createFileRoute("/dashboard")({
       {
         name: "description",
         content:
-          "Student portal dashboard: profile, attendance, homework, fee status, notices, downloads, class routine and examination results.",
+          "Student portal dashboard: profile, attendance, homework, fee status, notices, class routine and examination results.",
       },
       { property: "og:title", content: "Student Dashboard — Al Eman Islamic Academy" },
       { property: "og:description", content: "Profile, attendance, homework, fees, notices, routine and results." },
@@ -35,7 +34,6 @@ const tabs = [
   { id: "results", label: { en: "Results", bn: "ফলাফল" } },
   { id: "routine", label: { en: "Routine", bn: "রুটিন" } },
   { id: "notices", label: { en: "Notices", bn: "নোটিশ" } },
-  { id: "downloads", label: { en: "Downloads", bn: "ডাউনলোড" } },
 ] as const;
 
 function Dashboard() {
@@ -43,7 +41,6 @@ function Dashboard() {
   const navigate = useNavigate();
   const { student, ready, logout } = useStudentAuth();
   const { value: notices } = useNotices();
-  const { value: downloads } = useDownloads();
   const [tab, setTab] = useState<(typeof tabs)[number]["id"]>("profile");
 
   if (!ready) {
@@ -294,14 +291,6 @@ function Dashboard() {
                 </li>
               ))}
           </ul>
-        ) : null}
-
-        {tab === "downloads" ? (
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {downloads.map((d) => (
-              <DocCard key={d.id} doc={d} />
-            ))}
-          </div>
         ) : null}
       </div>
 

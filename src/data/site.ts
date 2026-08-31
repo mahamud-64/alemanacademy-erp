@@ -44,7 +44,6 @@ export const primaryNav: NavItem[] = [
 ];
 
 export const moreNav: NavItem[] = [
-  { to: "/downloads", label: { en: "Downloads", bn: "ডাউনলোড" } },
   { to: "/calendar", label: { en: "Academic Calendar", bn: "শিক্ষা পঞ্জি" } },
   { to: "/routine", label: { en: "Class Routine", bn: "ক্লাস রুটিন" } },
   { to: "/achievements", label: { en: "Achievements", bn: "অর্জন" } },
@@ -98,223 +97,13 @@ export type DownloadDoc = {
   category: Bi;
   size: string;
   updated: string;
-  /** Text body rendered into the generated PDF. */
-  content: string[];
-};
 
-export const defaultDownloads: DownloadDoc[] = [
-  {
-    id: "admission-form",
-    title: { en: "Admission Form 2027", bn: "ভর্তি ফরম ২০২৭" },
-    description: {
-      en: "Printable admission application form for Play Group to Class X.",
-      bn: "প্লে গ্রুপ থেকে দশম শ্রেণির জন্য মুদ্রণযোগ্য ভর্তি আবেদন ফরম।",
-    },
-    category: { en: "Admission", bn: "ভর্তি" },
-    size: "182 KB",
-    updated: "2026-07-28",
-    content: [
-      "Session: 2027    Form No: ..............",
-      "1. Name of student (English): ..................................",
-      "2. Name of student (Bangla): ...................................",
-      "3. Date of birth: ......../......../..........  Birth Reg No: ..........",
-      "4. Class applied for: ..........  Section: ..........",
-      "5. Father's name: ..............................................",
-      "6. Mother's name: .............................................",
-      "7. Guardian mobile: ..............  E-mail: ..................",
-      "8. Present address: ...........................................",
-      "9. Previous institution: ......................................",
-      "Documents attached: birth certificate, 2 photographs, transfer certificate, guardian NID.",
-      "Signature of guardian: ....................   Date: ..............",
-      "For office use only: Test date .......  Roll .......  Result .......",
-    ],
-  },
-  {
-    id: "prospectus",
-    title: { en: "School Prospectus 2026-27", bn: "স্কুল প্রসপেক্টাস ২০২৬-২৭" },
-    description: {
-      en: "Full introduction to the academy, curriculum, faculty and facilities.",
-      bn: "একাডেমি, শিক্ষাক্রম, শিক্ষকমণ্ডলী ও সুবিধাদির সম্পূর্ণ পরিচিতি।",
-    },
-    category: { en: "General", bn: "সাধারণ" },
-    size: "1.4 MB",
-    updated: "2026-06-02",
-    content: [
-      "Al Eman Islamic Academy - Prospectus 2026-27",
-      "Established 2017 | Chattogram, Bangladesh",
-      "Vision: Committed to integrating Islamic and modern education.",
-      "Sections: Play Group, Nursery, KG, Class I-X (Science & Business Studies).",
-      "Curriculum: NCTB National Curriculum + Qur'an, Hifz, Arabic and Islamic Studies.",
-      "Faculty: 34 full-time teachers, 6 huffaz, 4 lab instructors.",
-      "Facilities: science lab, computer lab, library, prayer hall, playground, transport.",
-      "Class size: maximum 32 students. Teacher-student ratio 1:18.",
-      "Contact: +880 131-697-7822 | alemanislamicacademy@gmail.com",
-    ],
-  },
-  {
-    id: "academic-calendar",
-    title: { en: "Academic Calendar 2026", bn: "শিক্ষা পঞ্জি ২০২৬" },
-    description: {
-      en: "Month-by-month term dates, examinations and holidays.",
-      bn: "মাসভিত্তিক শিক্ষাবর্ষ, পরীক্ষা ও ছুটির তালিকা।",
-    },
-    category: { en: "Academic", bn: "শিক্ষা" },
-    size: "240 KB",
-    updated: "2026-01-05",
-    content: [
-      "January  - Session opens (02), Book distribution week (05-09)",
-      "February - Language Month programme (21), First class test (10-14)",
-      "March    - Independence Day observance (26)",
-      "April    - Ramadan schedule, Eid-ul-Fitr vacation",
-      "May      - Pre half-yearly assessment (18-22)",
-      "June     - Parents' meeting (26), Summer vacation begins (04 July)",
-      "August   - Half-Yearly Examination (10-24)",
-      "September- Admission test (12), Annual sports (25)",
-      "October  - Qirat & Hifz competition, Study tour",
-      "November - Pre-annual assessment (09-13)",
-      "December - Annual Examination (01-15), Result & prize giving (28)",
-    ],
-  },
-  {
-    id: "holiday-list",
-    title: { en: "Holiday List 2026", bn: "ছুটির তালিকা ২০২৬" },
-    description: {
-      en: "Official list of government and institutional holidays.",
-      bn: "সরকারি ও প্রাতিষ্ঠানিক ছুটির সরকারি তালিকা।",
-    },
-    category: { en: "Academic", bn: "শিক্ষা" },
-    size: "96 KB",
-    updated: "2026-01-05",
-    content: [
-      "21 February - International Mother Language Day",
-      "26 March    - Independence Day",
-      "14 April    - Bangla New Year",
-      "01 May      - May Day",
-      "Ramadan / Eid-ul-Fitr vacation - 18 days",
-      "04-16 July  - Summer & Eid-ul-Adha vacation",
-      "Ashura, Eid-e-Miladunnabi - 1 day each",
-      "16 December - Victory Day",
-      "Winter vacation - 25-31 December",
-    ],
-  },
-  {
-    id: "class-routine",
-    title: { en: "Class Routine 2026", bn: "ক্লাস রুটিন ২০২৬" },
-    description: {
-      en: "Weekly period-wise routine for all classes and sections.",
-      bn: "সকল শ্রেণি ও শাখার সাপ্তাহিক পিরিয়ডভিত্তিক রুটিন।",
-    },
-    category: { en: "Academic", bn: "শিক্ষা" },
-    size: "310 KB",
-    updated: "2026-01-12",
-    content: [
-      "Period 1  08:00-08:40 | Period 2 08:45-09:25 | Period 3 09:30-10:10",
-      "Assembly & Tilawat 07:45-08:00 daily",
-      "Break 10:10-10:35",
-      "Period 4  10:35-11:15 | Period 5 11:20-12:00 | Period 6 12:05-12:45",
-      "Zuhr prayer 12:45-13:15",
-      "Period 7  13:15-13:55 (Class VI-X only)",
-      "Friday: closed. Saturday-Thursday: full routine.",
-    ],
-  },
-  {
-    id: "exam-routine",
-    title: { en: "Half-Yearly Exam Routine 2026", bn: "অর্ধবার্ষিক পরীক্ষার রুটিন ২০২৬" },
-    description: {
-      en: "Date, subject and time for every class in the half-yearly exam.",
-      bn: "অর্ধবার্ষিক পরীক্ষার প্রতিটি শ্রেণির তারিখ, বিষয় ও সময়।",
-    },
-    category: { en: "Examination", bn: "পরীক্ষা" },
-    size: "204 KB",
-    updated: "2026-07-20",
-    content: [
-      "10 Aug - Bangla 1st paper   | 10:00 AM - 12:30 PM",
-      "12 Aug - English 1st paper  | 10:00 AM - 12:30 PM",
-      "14 Aug - Mathematics        | 10:00 AM - 01:00 PM",
-      "17 Aug - Islamic Studies    | 10:00 AM - 12:30 PM",
-      "19 Aug - Science            | 10:00 AM - 12:30 PM",
-      "21 Aug - Bangladesh & Global Studies | 10:00 AM - 12:30 PM",
-      "24 Aug - ICT / Arabic       | 10:00 AM - 12:00 PM",
-    ],
-  },
-  {
-    id: "syllabus",
-    title: { en: "Syllabus (Class I–X)", bn: "সিলেবাস (১ম–১০ম শ্রেণি)" },
-    description: {
-      en: "Chapter-wise syllabus distribution for the full session.",
-      bn: "পূর্ণ শিক্ষাবর্ষের অধ্যায়ভিত্তিক সিলেবাস বিভাজন।",
-    },
-    category: { en: "Academic", bn: "শিক্ষা" },
-    size: "820 KB",
-    updated: "2026-01-12",
-    content: [
-      "Class I-III : Bangla, English, Mathematics, Religion, Qaida/Qur'an",
-      "Class IV-V  : + Bangladesh & Global Studies, Science, Arabic",
-      "Class VI-VIII: + ICT, Agriculture, Physical Education, Hifz (optional)",
-      "Class IX-X (Science): Physics, Chemistry, Biology, Higher Math",
-      "Class IX-X (Business): Accounting, Finance, Business Entrepreneurship",
-      "Islamic Studies and Qur'an Tilawat are compulsory for all classes.",
-    ],
-  },
-  {
-    id: "fee-structure",
-    title: { en: "Fee Structure 2026", bn: "বেতন কাঠামো ২০২৬" },
-    description: {
-      en: "Admission, monthly tuition, exam and transport charges.",
-      bn: "ভর্তি, মাসিক বেতন, পরীক্ষা ও পরিবহন ফি।",
-    },
-    category: { en: "Fees", bn: "ফি" },
-    size: "128 KB",
-    updated: "2026-01-05",
-    content: [
-      "Play Group / Nursery / KG : Admission 4,000 BDT | Monthly 1,100 BDT",
-      "Class I-III               : Admission 4,500 BDT | Monthly 1,300 BDT",
-      "Class IV-V                : Admission 5,000 BDT | Monthly 1,500 BDT",
-      "Class VI-VIII             : Admission 5,500 BDT | Monthly 1,800 BDT",
-      "Class IX-X                : Admission 6,500 BDT | Monthly 2,200 BDT",
-      "Examination fee (per term): 600 BDT",
-      "Transport (optional)      : 900 - 1,600 BDT by route",
-      "Sibling discount 10% | Hifz scholarship up to 50%",
-    ],
-  },
-  {
-    id: "uniform-guide",
-    title: { en: "Uniform Guide", bn: "ইউনিফর্ম নির্দেশিকা" },
-    description: {
-      en: "Approved uniform, colour codes and grooming standards.",
-      bn: "অনুমোদিত ইউনিফর্ম, রঙ ও পরিচ্ছন্নতার নির্দেশনা।",
-    },
-    category: { en: "General", bn: "সাধারণ" },
-    size: "154 KB",
-    updated: "2025-11-20",
-    content: [
-      "Boys : white shirt, deep green trousers, green tie, white cap, black shoes.",
-      "Girls: deep green kameez, white salwar, green scarf/hijab, black shoes.",
-      "Sports day: white t-shirt with academy monogram and green trousers.",
-      "Winter : deep green sweater with monogram only.",
-      "ID card must be worn at all times inside the campus.",
-    ],
-  },
-  {
-    id: "school-magazine",
-    title: { en: "School Magazine — Al Eman Barta", bn: "স্কুল ম্যাগাজিন — আল ঈমান বার্তা" },
-    description: {
-      en: "Annual magazine with student writing, art and event reports.",
-      bn: "শিক্ষার্থীদের লেখা, চিত্রকর্ম ও অনুষ্ঠানের প্রতিবেদনসহ বার্ষিক ম্যাগাজিন।",
-    },
-    category: { en: "General", bn: "সাধারণ" },
-    size: "3.2 MB",
-    updated: "2025-12-28",
-    content: [
-      "Al Eman Barta - Annual Magazine 2025",
-      "Message from the Principal",
-      "Student essays: 'Adab in daily life', 'My village', 'Science and faith'",
-      "Report: Annual sports, Qirat competition, Study tour to Sitakunda",
-      "Result highlights: 100% pass, 41 GPA-5 in SSC 2025",
-      "Art & calligraphy section",
-    ],
-  },
-];
+  /** Text body rendered into the generated PDF. */
+  content?: string[];
+
+  /** Optional image used for image-based documents. */
+  image?: string;
+};
 
 /* ---------------------------------- Results --------------------------------- */
 
@@ -867,17 +656,66 @@ export const galleryAlbums: { id: string; label: Bi }[] = [
 ];
 
 export const galleryItems: GalleryItem[] = [
-  { id: "1", albumId: "campus", album: { en: "Campus", bn: "ক্যাম্পাস" }, caption: { en: "Main academic building", bn: "প্রধান একাডেমিক ভবন" }, src: ""},
-  { id: "2", albumId: "academic", album: { en: "Academic", bn: "শিক্ষা কার্যক্রম" }, caption: { en: "Classroom", bn: "ক্লাসরুম" }, src: "https://scontent.fcgp7-1.fna.fbcdn.net/v/t39.30808-6/528687217_1128990365918613_4029171464294472590_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=108&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeGKqTIbUiw8TH2ZGDXa2phw99nghgS_Jz332eCGBL8nPbFWhHU28qMabgCL_KhWCTOrrhLXZncUX1oQ1rLb1XRi&_nc_ohc=Ce5plX9HppEQ7kNvwFtZJGc&_nc_oc=AdrSrX44fMFpDzN0nH8jF0zUTMxU7LikXwdQcCZ2ujMc2fax2IN_CU8sCFuuP9ffDV0&_nc_zt=23&_nc_ht=scontent.fcgp7-1.fna&_nc_gid=nT6JehHMgjnp3B9rMGO1lQ&_nc_ss=7b2a8&oh=00_AQFbjbJwf6zgoFTN_lIOwLTaGQVblGxQOTlU3AbauIiZYA&oe=6A7AC0CE" },
-  { id: "3", albumId: "academic", album: { en: "Academic", bn: "শিক্ষা কার্যক্রম" }, caption: { en: "Classroom", bn: "ক্লাসরুম" }, src: "https://scontent.fcgp7-2.fna.fbcdn.net/v/t39.30808-6/526581879_1128989929251990_1004640377528100014_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=101&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeFkDCqEqgogcrYhXmwnVBorm6sw5ji8wzibqzDmOLzDOBWmw_mM8tHM4tMhWPPOX43Yp5uqPQscZf3RCWFbEUp3&_nc_ohc=-Wh6xYcedxUQ7kNvwGp9gYM&_nc_oc=AdpLN8__NTiaiY_ZallVAmPUJbJTM0UXySN3ApYRtEY-4U4O3hbFjD4ZVDy_KFPX-Nk&_nc_zt=23&_nc_ht=scontent.fcgp7-2.fna&_nc_gid=tPUkLUEZP7nDfqO0df39cA&_nc_ss=7b2a8&oh=00_AQF7IudI3NBepEgA1yt4fUTmLbUbvdJQSHX4yC7h7eaulQ&oe=6A7A9921" },
-  { id: "4", albumId: "academic", album: { en: "Academic", bn: "শিক্ষা কার্যক্রম" }, caption: { en: "Qur'an tilawat period", bn: "কুরআন তিলাওয়াত পিরিয়ড" }, src: "https://scontent.fcgp7-1.fna.fbcdn.net/v/t39.30808-6/476910411_9371252652940118_3680357462751757352_n.jpg?stp=c0.290.720.720a_dst-jpg_tt6&cstp=mx720x720&ctp=s206x206&_nc_cat=109&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeHlYF5OKgd5SdpB6DsceZ0bEwHe2dODweMTAd7Z04PB45u1ATbTkElsEjr4zegefcetKgrK1BfKLj6VSdhk2GoD&_nc_ohc=dR1tAB1gEt0Q7kNvwEoIppS&_nc_oc=AdqZfqOIS_4-L59-DBYOakpr7Ad0fLE_JB3KwqxdfrcMPhYq_cTdHsD0Jlz0lJTg96c&_nc_zt=23&_nc_ht=scontent.fcgp7-1.fna&_nc_gid=phDiDaleRWatv9mEkfxMKA&_nc_ss=7b2a8&oh=00_AQEl40F0mWyXLplhfIuXqUwMpFCuIFtmRuihVM3qtRF7gw&oe=6A7AB0F4" },
- // { id: "6", albumId: "events", album: { en: "Events", bn: "অনুষ্ঠান" }, caption: { en: "Annual Qirat competition", bn: "বার্ষিক কিরাত প্রতিযোগিতা" }, src: g("aeia-event-1") },
-  { id: "5", albumId: "events", album: { en: "Events", bn: "অনুষ্ঠান" }, caption: { en: "Prize giving ceremony", bn: "পুরস্কার বিতরণী অনুষ্ঠান" }, src: "https://scontent.fcgp7-1.fna.fbcdn.net/v/t39.30808-6/600337738_1241973594620289_6864694349025620938_n.jpg?stp=dst-jpg_tt6&cstp=mx1280x960&ctp=s1280x960&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGITFiL5tKMWM-FjWmYPkLzA9lxnDaFAdsD2XGcNoUB219nhVX6IqwUJeUZUrGx5Evh1Xs7fXJwuLc7CTp-K3K_&_nc_ohc=L7sLtFEGwnMQ7kNvwHK9iOr&_nc_oc=Adp-jmStwA56jNrXLLcytSPT3An9hg6UCiHY9gBeQo1Hr-EpSj1O8qnKXaqt3bWDbcM&_nc_zt=23&_nc_ht=scontent.fcgp7-1.fna&_nc_gid=6qiZ3tLwk9pLd7UWBbbQ9g&_nc_ss=7b2a8&oh=00_AQF98guxuCbNtzD5IpMSjto1iosoFs6CkUPDlaUJh3rP2g&oe=6A7A9F44" },
- // { id: "8", albumId: "events", album: { en: "Events", bn: "অনুষ্ঠান" }, caption: { en: "Language Day observance", bn: "ভাষা দিবস পালন" }, src: g("aeia-event-3") },
- // { id: "9", albumId: "sports", album: { en: "Sports", bn: "ক্রীড়া" }, caption: { en: "Annual sports day", bn: "বার্ষিক ক্রীড়া দিবস" }, src: g("aeia-sporsdt-1") },
- // { id: "10", albumId: "sports", album: { en: "Sports", bn: "ক্রীড়া" }, caption: { en: "Inter-house football final", bn: "আন্তঃহাউস ফুটবল ফাইনাল" }, src: g("aeia-sport-2") },
-  { id: "6", albumId: "campus", album: { en: "Campus", bn: "ক্যাম্পাস" }, caption: { en: "Prayer hall", bn: "নামাজের কক্ষ" }, src: "https://scontent.fcgp7-2.fna.fbcdn.net/v/t39.30808-6/728606722_1394860692664911_7871008635944326510_n.jpg?stp=c160.0.960.960a_dst-jpg_tt6&cstp=mx960x960&ctp=s206x206&_nc_cat=105&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeGkdyJrPqrtljEehyQRqGfP8LhjJ0_seIjwuGMnT-x4iNMSQQyQEwI5kv63f44Ug1Ok9JXwXoOjx6rfA6BSPDwe&_nc_ohc=Fy56li8mH88Q7kNvwGmYUzA&_nc_oc=AdosGwBHtydoH4Mp8g9nqWmRvVKI6C3baX6nl1JBKY1ymz-ab_NcbYigjxJoWZUyqVA&_nc_zt=23&_nc_ht=scontent.fcgp7-2.fna&_nc_gid=HLLNrBahoIY6bqWY3W5EQg&_nc_ss=7b2a8&oh=00_AQFeP1ALeb9JUNRExWvCvHU1AIGU37GOX-qtNenoUXHlOQ&oe=6A7AAC63" },
- // { id: "12", albumId: "sports", album: { en: "Sports", bn: "ক্রীড়া" }, caption: { en: "Badminton championship", bn: "ব্যাডমিন্টন চ্যাম্পিয়নশিপ" }, src: g("aeia-sposrt-3") },
+  /*{
+    id: "1",
+    albumId: "campus",
+    album: { en: "Campus", bn: "ক্যাম্পাস" },
+    caption: {
+      en: "Main academic building",
+      bn: "প্রধান একাডেমিক ভবন",
+    },
+    src: "/gallery/campus.jpg",
+  },*/
+  {
+    id: "2",
+    albumId: "academic",
+    album: { en: "Academic", bn: "শিক্ষা কার্যক্রম" },
+    caption: {
+      en: "Classroom",
+      bn: "ক্লাসরুম",
+    },
+    src: "/gallery/classroom.jpg",
+  },
+  {
+    id: "3",
+    albumId: "academic",
+    album: { en: "Academic", bn: "শিক্ষা কার্যক্রম" },
+    caption: {
+      en: "Classroom",
+      bn: "ক্লাসরুম",
+    },
+    src: "/gallery/classroom.jpg",
+  },
+  /*{
+    id: "4",
+    albumId: "academic",
+    album: { en: "Academic", bn: "শিক্ষা কার্যক্রম" },
+    caption: {
+      en: "Qur'an tilawat period",
+      bn: "কুরআন তিলাওয়াত পিরিয়ড",
+    },
+    src: "/gallery/quran.jpg",
+  },*/
+  {
+    id: "5",
+    albumId: "events",
+    album: { en: "Events", bn: "অনুষ্ঠান" },
+    caption: {
+      en: "Prize giving ceremony",
+      bn: "পুরস্কার বিতরণী অনুষ্ঠান",
+    },
+    src: "/gallery/1.jpg",
+  },
+ /* {
+    id: "6",
+    albumId: "campus",
+    album: { en: "Campus", bn: "ক্যাম্পাস" },
+    caption: {
+      en: "Prayer hall",
+      bn: "নামাজের কক্ষ",
+    },
+    src: "/gallery/prayer-hall.jpg",
+  },*/
 ];
 
 /* ----------------------------- Site settings -------------------------------- */

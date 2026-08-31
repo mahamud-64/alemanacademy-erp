@@ -10,6 +10,7 @@ import { useLang } from "@/lib/i18n";
 import { PublishResultsManager } from "@/components/admin/PublishResultsManager";
 import TeacherAccess from "@/pages/admin/TeacherAccess";
 import SlidingNews from "@/pages/admin/SlidingNews";
+import { FeeEntries } from "@/components/admin/FeeEntries";
 export const Route = createFileRoute("/admin/$module")({
   validateSearch: (search: Record<string, unknown>) => ({
     action: typeof search["action"] === "string" ? (search["action"] as string) : undefined,
@@ -111,10 +112,12 @@ function ModulePage() {
 
   return (
     <div className="space-y-4">
-  
-        {mod.id === "sliding-news" ? (
+
+        {mod.id === "fee-entries" ? (
+          <FeeEntries />
+        ) : mod.id === "sliding-news" ? (
           <SlidingNews />
-        ):mod.id === "teacher-access" ? (
+        ) : mod.id === "teacher-access" ? (
           <TeacherAccess />
         ) : mod.id === "enrollment" ? (
           <EnrollmentManager />

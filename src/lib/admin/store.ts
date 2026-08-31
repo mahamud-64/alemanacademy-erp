@@ -56,7 +56,29 @@ function studentRecordToDatabase(
       String(record.registration ?? "").trim() || null,
   };
 }
+function feeStructureRowToRecord(
+  row: Record<string, unknown>,
+): AdminRecord {
+  return {
+    id: String(row.id ?? ""),
+    class_name: String(row.class_name ?? ""),
+    fee_head: String(row.fee_head ?? ""),
+    amount: Number(row.amount ?? 0),
+    is_active: Boolean(row.is_active ?? true),
+  };
+}
 
+function feeStructureRecordToDatabase(
+  record: AdminRecord,
+): Record<string, unknown> {
+  return {
+    class_name: String(record.class_name ?? "").trim(),
+    fee_head: String(record.fee_head ?? "").trim(),
+    amount: Number(record.amount ?? 0),
+    is_active:
+      String(record.is_active ?? "") === "Active",
+  };
+}
 /**
  * Data access layer for admin modules.
  *
@@ -149,9 +171,46 @@ export function useCollection(mod: ModuleDef) {
   // LOAD
   // ==========================================================
 
+  const loadFeeStructures = useCallback(async () => {
+    setLoading(true);
+
+    const { data, error } = await supabase
+      .from("fee_structures")
+      .select("*")
+      .order("class_name", {
+        ascending: true,
+      });
+
+    if (error) {
+      console.error(
+        "Failed to load fee structures:",
+        error,
+      );
+
+      setRows([]);
+      setLoading(false);
+      return;
+    }
+
+    setRows(
+      (data ?? []).map((row) =>
+        feeStructureRowToRecord(
+          row as Record<string, unknown>,
+        ),
+      ),
+    );
+
+    setLoading(false);
+  }, []);
+
   const load = useCallback(async () => {
     if (mod.id === "students") {
       await loadStudents();
+      return;
+    }
+
+    if (mod.id === "fees") {
+      await loadFeeStructures();
       return;
     }
 
@@ -159,6 +218,7 @@ export function useCollection(mod: ModuleDef) {
   }, [
     mod.id,
     loadStudents,
+    loadFeeStructures,
     loadCollection,
   ]);
 
@@ -215,7 +275,44 @@ export function useCollection(mod: ModuleDef) {
 
           return next;
         }
+          // ----------------------------------------------------
+          // FEE STRUCTURES — REAL SUPABASE TABLE
+          // ----------------------------------------------------
 
+          if (mod.id === "fees") {
+            const feeData =
+              feeStructureRecordToDatabase(
+                record as AdminRecord,
+              );
+
+            const { data, error } =
+              await supabase
+                .from("fee_structures")
+                .insert(feeData)
+                .select("*")
+                .single();
+
+            if (error) {
+              console.error(
+                "Failed to create fee structure:",
+                error,
+              );
+
+              throw error;
+            }
+
+            const next =
+              feeStructureRowToRecord(
+                data as Record<string, unknown>,
+              );
+
+            setRows((current) => [
+              ...current,
+              next,
+            ]);
+
+            return next;
+          }
         // ----------------------------------------------------
         // OTHER MODULES
         // ----------------------------------------------------
@@ -315,7 +412,48 @@ export function useCollection(mod: ModuleDef) {
 
           return;
         }
+        // ----------------------------------------------------
+        // FEE STRUCTURES — REAL SUPABASE TABLE
+        // ----------------------------------------------------
 
+        if (mod.id === "fees") {
+          const feeData =
+            feeStructureRecordToDatabase(
+              record,
+            );
+
+          const { data, error } =
+            await supabase
+              .from("fee_structures")
+              .update(feeData)
+              .eq("id", record.id)
+              .select("*")
+              .single();
+
+          if (error) {
+            console.error(
+              "Failed to update fee structure:",
+              error,
+            );
+
+            throw error;
+          }
+
+          const updated =
+            feeStructureRowToRecord(
+              data as Record<string, unknown>,
+            );
+
+          setRows((current) =>
+            current.map((row) =>
+              row.id === record.id
+                ? updated
+                : row,
+            ),
+          );
+
+          return;
+        }
         // ----------------------------------------------------
         // OTHER MODULES
         // ----------------------------------------------------
@@ -392,7 +530,34 @@ export function useCollection(mod: ModuleDef) {
 
           return;
         }
+        // ----------------------------------------------------
+        // FEE STRUCTURES — REAL SUPABASE TABLE
+        // ----------------------------------------------------
 
+        if (mod.id === "fees") {
+          const { error } =
+            await supabase
+              .from("fee_structures")
+              .delete()
+              .eq("id", id);
+
+          if (error) {
+            console.error(
+              "Failed to delete fee structure:",
+              error,
+            );
+
+            throw error;
+          }
+
+          setRows((current) =>
+            current.filter(
+              (row) => row.id !== id,
+            ),
+          );
+
+          return;
+        }
         // ----------------------------------------------------
         // OTHER MODULES
         // ----------------------------------------------------

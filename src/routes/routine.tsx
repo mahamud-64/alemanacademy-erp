@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Download, Printer } from "lucide-react";
 import { useLang } from "@/lib/i18n";
-import { defaultDownloads, routineDays, routinePeriods } from "@/data/site";
+import { routineDays, routinePeriods } from "@/data/site";
 import { downloadPdf, printPage } from "@/lib/pdf";
-import { DocCard } from "@/components/DocCard";
 import { PageHero, Section, SectionTitle } from "@/components/ui-kit";
 import { useState } from "react";
 
@@ -25,7 +24,7 @@ export const Route = createFileRoute("/routine")({
 
 function ClassRoutine() {
   const { t, tb } = useLang();
-  const doc = defaultDownloads.find((d) => d.id === "class-routine")!;
+  
 const classes = [
   { en: "Play", bn: "প্লে" },
   { en: "Nursery", bn: "নার্সারি" },
@@ -116,10 +115,22 @@ const classes = [
                 <Printer className="size-4" aria-hidden /> {t("Print", "প্রিন্ট")}
               </button>
               <button
-                onClick={() => downloadPdf("class-routine-2026", "Class Routine 2026", doc.content.map((c) => ({ text: c })))}
+                onClick={() =>
+                  downloadPdf(
+                    "class-routine-2026",
+                    "Class Routine 2026",
+                    [
+                      { text: `${tb(selectedClass)} - Class Routine 2026` },
+                      ...routineDays.map((d) => ({
+                        text: `${tb(d.day)}: ${d.subjects.join(" | ")}`,
+                      })),
+                    ],
+                  )
+                }
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary-deep"
               >
-                <Download className="size-4" aria-hidden /> {t("Download PDF", "পিডিএফ ডাউনলোড")}
+                <Download className="size-4" aria-hidden />
+                {t("Download PDF", "পিডিএফ ডাউনলোড")}
               </button>
             </div>
 

@@ -19,7 +19,6 @@ import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DeveloperRouteImport } from './routes/developer'
-import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as FacilitiesRouteImport } from './routes/facilities'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as LoginRouteImport } from './routes/login'
@@ -84,11 +83,6 @@ const DashboardRoute = DashboardRouteImport.update({
 const DeveloperRoute = DeveloperRouteImport.update({
   id: '/developer',
   path: '/developer',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DownloadsRoute = DownloadsRouteImport.update({
-  id: '/downloads',
-  path: '/downloads',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FacilitiesRoute = FacilitiesRouteImport.update({
@@ -178,7 +172,6 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/developer': typeof DeveloperRoute
-  '/downloads': typeof DownloadsRoute
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
   '/login': typeof LoginRoute
@@ -205,7 +198,6 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/developer': typeof DeveloperRoute
-  '/downloads': typeof DownloadsRoute
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
   '/login': typeof LoginRoute
@@ -234,7 +226,6 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/developer': typeof DeveloperRoute
-  '/downloads': typeof DownloadsRoute
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
   '/login': typeof LoginRoute
@@ -264,7 +255,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/dashboard'
     | '/developer'
-    | '/downloads'
     | '/facilities'
     | '/gallery'
     | '/login'
@@ -291,7 +281,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/dashboard'
     | '/developer'
-    | '/downloads'
     | '/facilities'
     | '/gallery'
     | '/login'
@@ -319,7 +308,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/dashboard'
     | '/developer'
-    | '/downloads'
     | '/facilities'
     | '/gallery'
     | '/login'
@@ -348,7 +336,6 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
   DeveloperRoute: typeof DeveloperRoute
-  DownloadsRoute: typeof DownloadsRoute
   FacilitiesRoute: typeof FacilitiesRoute
   GalleryRoute: typeof GalleryRoute
   LoginRoute: typeof LoginRoute
@@ -430,13 +417,6 @@ declare module '@tanstack/react-router' {
       path: '/developer'
       fullPath: '/developer'
       preLoaderRoute: typeof DeveloperRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/downloads': {
-      id: '/downloads'
-      path: '/downloads'
-      fullPath: '/downloads'
-      preLoaderRoute: typeof DownloadsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/facilities': {
@@ -578,7 +558,6 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,
   DeveloperRoute: DeveloperRoute,
-  DownloadsRoute: DownloadsRoute,
   FacilitiesRoute: FacilitiesRoute,
   GalleryRoute: GalleryRoute,
   LoginRoute: LoginRoute,

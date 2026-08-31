@@ -103,9 +103,20 @@ export const adminNav: AdminNavGroup[] = [
     label: bi("Fees", "ফি"),
     icon: CreditCard,
     items: [
-      { label: bi("Fee Structure", "ফি কাঠামো"), module: "fees" },
-      { label: bi("Collect Fees", "ফি আদায়"), module: "fees", action: "new" },
-      { label: bi("Due List", "বকেয়া তালিকা"), module: "fees", action: "due" },
+      {
+        label: bi("Fee Structure", "ফি কাঠামো"),
+        module: "fees",
+      },
+      {
+        label: bi("Collect Fees", "ফি আদায়"),
+        module: "fee-entries",
+        action: "new",
+      },
+      {
+        label: bi("Due List", "বকেয়া তালিকা"),
+        module: "fee-entries",
+        action: "due",
+      },
     ],
   },
   {
@@ -126,6 +137,7 @@ export const adminNav: AdminNavGroup[] = [
       { label: bi("Sliding News", "স্লাইডিং নিউজ",),module: "sliding-news",},
     ],
   },
+  /*
   {
     label: bi("Downloads", "ডাউনলোড"),
     icon: Download,
@@ -133,7 +145,7 @@ export const adminNav: AdminNavGroup[] = [
       { label: bi("All Files", "সব ফাইল"), module: "downloads" },
       { label: bi("Upload File", "ফাইল আপলোড"), module: "downloads", action: "new" },
     ],
-  },
+  },*/
   {
     label: bi("Gallery", "গ্যালারি"),
     icon: ImageIcon,

@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Download, Printer } from "lucide-react";
 import { useLang } from "@/lib/i18n";
-import { calendarMonths, defaultDownloads } from "@/data/site";
+import { calendarMonths} from "@/data/site";
 import { downloadPdf, printPage } from "@/lib/pdf";
-import { DocCard } from "@/components/DocCard";
+
 import { PageHero, Section, SectionTitle } from "@/components/ui-kit";
 
 export const Route = createFileRoute("/calendar")({
@@ -24,7 +24,6 @@ export const Route = createFileRoute("/calendar")({
 
 function AcademicCalendar() {
   const { t, tb } = useLang();
-  const doc = defaultDownloads.find((d) => d.id === "academic-calendar")!;
 
   return (
     <>
@@ -47,7 +46,14 @@ function AcademicCalendar() {
           </button>
           <button
             onClick={() =>
-              downloadPdf("academic-calendar-2026", "Academic Calendar 2026", doc.content.map((c) => ({ text: c })))
+              downloadPdf(
+                "academic-calendar-2026",
+                "Academic Calendar 2026",
+                calendarMonths.flatMap((month) => [
+                  { text: tb(month.month) },
+                  ...month.items.map((item) => ({ text: tb(item) })),
+                ]),
+              )
             }
             className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary-deep"
           >
@@ -69,13 +75,6 @@ function AcademicCalendar() {
               </ul>
             </article>
           ))}
-        </div>
-      </Section>
-
-      <Section muted className="no-print">
-        <SectionTitle eyebrow={t("PDF", "পিডিএফ")} title={t("Preview & download", "প্রিভিউ ও ডাউনলোড")} />
-        <div className="mx-auto mt-8 max-w-md">
-          <DocCard doc={doc} />
         </div>
       </Section>
     </>

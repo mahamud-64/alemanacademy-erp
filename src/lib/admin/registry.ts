@@ -1,6 +1,5 @@
 import type { Bi } from "@/lib/i18n";
 import {
-  defaultDownloads,
   galleryItems,
   portalStudents,
   teachers as teacherSeed,
@@ -317,25 +316,122 @@ export const modules: ModuleDef[] = [
   },
   {
     id: "fees",
-    title: bi("Fees", "ফি"),
-    group: bi("Fees", "ফি"),
-    description: bi("Fee structure, collection, payment history and dues.", "ফি কাঠামো, আদায়, পেমেন্ট ইতিহাস ও বকেয়া।"),
-    storageKey: "aeia.admin.fees",
+
+    title: bi(
+      "Fee Structure",
+      "ফি কাঠামো",
+    ),
+
+    group: bi(
+      "Fees",
+      "ফি",
+    ),
+
+    description: bi(
+      "Manage the default fee amount for each class.",
+      "প্রতিটি শ্রেণির নির্ধারিত ফি পরিচালনা করুন।",
+    ),
+
+    storageKey: "aeia.admin.fee_structures",
+
     fields: [
-      f("studentId", "Student ID", "স্টুডেন্ট আইডি"),
-      f("head", "Fee head", "ফি খাত", "select", { options: ["Monthly Tuition", "Admission", "Exam Fee", "Transport", "Hostel"] }),
-      f("month", "Month", "মাস"),
-      f("amount", "Amount (BDT)", "পরিমাণ (টাকা)", "number"),
-      f("status", "Status", "অবস্থা", "select", { options: ["Paid", "Due"] }),
-      f("paidOn", "Paid on", "পরিশোধের তারিখ", "date"),
+      f(
+        "class_name",
+        "Class",
+        "শ্রেণি",
+        "select",
+        {
+          options: [
+            "প্লে",
+            "নার্সারি",
+            "প্রথম শ্রেণি",
+            "দ্বিতীয় শ্রেণি",
+            "তৃতীয় শ্রেণি",
+            "চতুর্থ শ্রেণি",
+            "পঞ্চম শ্রেণি",
+            "ষষ্ঠ শ্রেণি",
+            "সপ্তম শ্রেণি",
+            "অষ্টম শ্রেণি",
+            "নবম শ্রেণি",
+            "দশম শ্রেণি",
+          ],
+          required: true,
+        },
+      ),
+
+      f(
+        "fee_head",
+        "Fee",
+        "ফি",
+        "select",
+        {
+          options: [
+            "monthly_fee",
+            "exam_fee",
+            "custom",
+          ],
+          required: true,
+        },
+      ),
+
+      f(
+        "amount",
+        "Amount (BDT)",
+        "পরিমাণ (টাকা)",
+        "number",
+        {
+          required: true,
+        },
+      ),
+
+      f(
+        "is_active",
+        "Status",
+        "অবস্থা",
+        "select",
+        {
+          options: ["Active", "Inactive"],
+          required: true,
+        },
+      ),
     ],
-    columns: ["studentId", "head", "month", "amount", "status", "paidOn"],
-    filterKey: "status",
-    seed: [
-      { id: "fe-1", studentId: "DEMO2026", head: "Monthly Tuition", month: "July 2026", amount: 2200, status: "Due", paidOn: "" },
-      { id: "fe-2", studentId: "DEMO2026", head: "Exam Fee", month: "July 2026", amount: 600, status: "Due", paidOn: "" },
-      { id: "fe-3", studentId: "AEIA-1102", head: "Monthly Tuition", month: "July 2026", amount: 2000, status: "Paid", paidOn: "2026-07-04" },
+
+    columns: [
+      "class_name",
+      "fee_head",
+      "amount",
+      "is_active",
     ],
+
+    filterKey: "is_active",
+
+    seed: [],
+  },
+  {
+    id: "fee-entries",
+
+    title: bi(
+      "Fee Entries",
+      "ফি এন্ট্রি",
+    ),
+
+    group: bi(
+      "Fees",
+      "ফি",
+    ),
+
+    description: bi(
+      "View, collect and manage student fee payments.",
+      "শিক্ষার্থীদের ফি দেখা, আদায় ও পরিচালনা করুন।",
+    ),
+
+    storageKey: "aeia.admin.fee_entries",
+
+    fields: [],
+
+    columns: [],
+
+    seed: [],
   },
   {
     id: "admissions",
@@ -420,7 +516,7 @@ export const modules: ModuleDef[] = [
       f("updated", "Updated", "হালনাগাদ", "date"),
     ],
     columns: ["title", "category", "size", "updated"],
-    seed: defaultDownloads as unknown as AdminRecord[],
+    seed: [],
   },
   {
     id: "gallery",

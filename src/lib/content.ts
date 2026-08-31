@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useLocalStore } from "@/lib/store";
 import { supabase } from "@/lib/supabase";
 import {
-  defaultDownloads,
   defaultSettings,
   type DownloadDoc,
   type Notice,
@@ -63,7 +62,14 @@ export function useNotices() {
 
 /** Files published from the admin panel (Admin → Downloads). */
 export function useDownloads() {
-  return usePublicCollection<DownloadDoc>("downloads", defaultDownloads);
+  const result = usePublicCollection<DownloadDoc>(
+    "downloads",
+    [],
+  );
+
+  console.log("LIVE DOWNLOADS:", result.value);
+
+  return result;
 }
 
 /** Site settings — still local to this browser; not part of the module registry. */

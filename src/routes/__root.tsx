@@ -83,26 +83,137 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Al Eman Islamic Academy | Chattogram" },
+
+      // Primary SEO
+      {
+        title: "Al Eman Islamic Academy | Chattogram",
+      },
       {
         name: "description",
         content:
-          "Al Eman Islamic Academy, Chattogram — committed to integrating Islamic and modern education from Play Group to Class X.",
+          "Al Eman Islamic Academy, Chattogram — integrating Islamic and modern education from Play Group to Class X.",
       },
-      { name: "author", content: "Al Eman Islamic Academy" },
-      { property: "og:site_name", content: "Al Eman Islamic Academy" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "theme-color", content: "#0f5132" },
+      {
+        name: "author",
+        content: "Al Eman Islamic Academy",
+      },
+      {
+        name: "robots",
+        content: "index, follow",
+      },
+      {
+        name: "googlebot",
+        content: "index, follow",
+      },
+
+      // Open Graph
+      {
+        property: "og:site_name",
+        content: "Al Eman Islamic Academy",
+      },
+      {
+        property: "og:type",
+        content: "website",
+      },
+      {
+        property: "og:title",
+        content: "Al Eman Islamic Academy | Chattogram",
+      },
+      {
+        property: "og:description",
+        content:
+          "Al Eman Islamic Academy, Chattogram — integrating Islamic and modern education from Play Group to Class X.",
+      },
+      {
+        property: "og:url",
+        content: "https://aleman-academy.vercel.app/",
+      },
+      {
+        property: "og:locale",
+        content: "en_BD",
+      },
+
+      // Twitter / social sharing
+      {
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
+      {
+        name: "twitter:title",
+        content: "Al Eman Islamic Academy | Chattogram",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Al Eman Islamic Academy, Chattogram — integrating Islamic and modern education from Play Group to Class X.",
+      },
+
+      // Browser UI
+      {
+        name: "theme-color",
+        content: "#0f5132",
+      },
     ],
+
     links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "icon", type: "image/png", href: "/favicon.png" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      // Canonical URL
+      {
+        rel: "canonical",
+        href: "https://aleman-academy.vercel.app/",
+      },
+
+      // Styles
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap",
+        href: appCss,
+      },
+
+      // Favicon
+      {
+        rel: "icon",
+        type: "image/png",
+        href: "/favicon.png",
+      },
+
+      // Google Fonts
+      {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "stylesheet",
+        href:
+          "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "School",
+          name: "Al Eman Islamic Academy",
+          alternateName: "আল ঈমান ইসলামিক একাডেমি",
+          url: "https://aleman-academy.vercel.app/",
+          logo: "https://aleman-academy.vercel.app/favicon.png",
+          description:
+            "Al Eman Islamic Academy, Chattogram — committed to integrating Islamic and modern education.",
+          telephone: "+8801819802313",
+          email: "alemanislamicacademy@gmail.com",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Kamal Para, Fotika",
+            addressLocality: "Hathazari",
+            addressRegion: "Chattogram",
+            addressCountry: "BD",
+          },
+          foundingDate: "2017",
+        }),
       },
     ],
   }),

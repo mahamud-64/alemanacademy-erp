@@ -8,6 +8,7 @@ import {
   Megaphone,
   ShieldCheck,
   Users,
+  Bell,
 } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import logo from "@/assets/logo.png";
@@ -75,7 +76,7 @@ function Home() {
   const quickLinks = [
     { to: "/admission", icon: GraduationCap, label: { en: "Admission", bn: "ভর্তি" } },
     { to: "/results", icon: BookOpen, label: { en: "Results", bn: "ফলাফল" } },
-    { to: "/downloads", icon: Download, label: { en: "Downloads", bn: "ডাউনলোড" } },
+    { to: "/notices", icon: Bell, label: { en: "Notices", bn: "নোটিশ" } },
     { to: "/routine", icon: CalendarDays, label: { en: "Class Routine", bn: "ক্লাস রুটিন" } },
   ] as const;
 
@@ -161,7 +162,7 @@ function Home() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             {stats.map((s) => (
-              <div key={s.value} className="surface-card p-6 text-center">
+              <div key={`stat-${s.value.en}`} className="surface-card p-6 text-center">
                 <s.icon className="mx-auto size-6 text-gold" aria-hidden />
                 <p className="mt-3 text-2xl font-bold text-primary">{tb(s.value)}</p>
                 <p className="mt-1 text-xs text-muted-foreground">{tb(s.label)}</p>
