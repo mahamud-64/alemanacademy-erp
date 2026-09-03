@@ -153,6 +153,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         name: "theme-color",
         content: "#0f5132",
       },
+      {
+        name: "mobile-web-app-capable",
+        content: "yes",
+      },
+      {
+        name: "apple-mobile-web-app-capable",
+        content: "yes",
+      },
+      {
+        name: "apple-mobile-web-app-status-bar-style",
+        content: "default",
+      },
+      {
+        name: "apple-mobile-web-app-title",
+        content: "Al Eman Academy",
+      },
     ],
 
     links: [
@@ -168,11 +184,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
 
-      // Favicon
+      // PWA / favicon
+      {
+        rel: "manifest",
+        href: "/manifest.webmanifest",
+      },
       {
         rel: "icon",
         type: "image/png",
         href: "/favicon.png",
+      },
+      {
+        rel: "apple-touch-icon",
+        href: "/pwa-192.png",
       },
 
       // Google Fonts
@@ -192,6 +216,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
     scripts: [
+      {
+        src: "/pwa-register.js",
+        defer: true,
+      },
       {
         type: "application/ld+json",
         children: JSON.stringify({

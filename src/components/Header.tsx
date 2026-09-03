@@ -17,6 +17,7 @@ import { useLang } from "@/lib/i18n";
 import { school, primaryNav, moreNav } from "@/data/site";
 import { useNotices, useSettings } from "@/lib/content";
 import { cn } from "@/lib/utils";
+import { PWAInstallButton } from "@/components/PWAInstallButton";
 
 type SearchHit = { title: string; to: string; group: string };
 
@@ -160,6 +161,7 @@ export function Header() {
             >
               <Search className="size-5" aria-hidden />
             </button>
+            <PWAInstallButton className="hidden lg:inline-flex" />
             <Link
               to="/login"
               className="hidden items-center justify-center rounded-full border border-primary px-3.75 py-1.75 text-center text-sm font-semibold text-primary transition-colors hover:bg-primary/5 sm:inline-flex"
@@ -236,6 +238,9 @@ export function Header() {
               >
                 {t("Apply Now", "আবেদন করুন")}
               </Link>
+            </div>
+            <div className="mt-3 flex gap-2">
+              <PWAInstallButton className="flex-1" />
             </div>
             <div className="mt-3 flex gap-2">
               <button

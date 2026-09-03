@@ -1,0 +1,27 @@
+{
+  "name": "Al Eman Islamic Academy",
+  "short_name": "Al Eman Academy",
+  "description": "Al Eman Islamic Academy, Chattogram — integrating Islamic and modern education from Play Group to Class X.",
+  "lang": "en-BD",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#0f5132",
+  "icons": [
+    {
+      "src": "/pwa-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/pwa-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
