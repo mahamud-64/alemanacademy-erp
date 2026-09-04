@@ -6,7 +6,7 @@ export const school = {
     en: "Committed to Integrating Islamic and Modern Education",
     bn: "ইসলামী ও যুগোপযোগী শিক্ষার সমন্বয় সাধনের প্রত্যয়ে.....",
   } satisfies Bi,
-  phone: "+8801819802313",
+  phone: "+8801840-160715",
   email: "alemanislamicacademy@gmail.com",
   address: {
     en: "Kamal Para, Fotika, Hathazari Municipality, Chattogram, Bangladesh",
@@ -22,12 +22,11 @@ Unit–02 >> Chowdhury Manzil, Beside Khansama Mosque, Kamal Para, Fotika, Hatha
 
   hours: { en: "Sat – Thu, 8:00 AM – 4:00 PM", bn: "শনি – বৃহস্পতি, সকাল ৮টা – বিকাল ৪টা" } satisfies Bi,
   social: {
-    facebook: "https://facebook.com/alemanbd",
-    youtube: "https://youtube.com",
-    whatsapp: "https://wa.me/8801819802313",
+    facebook: "https://facebook.com/allemanbd",
+    youtube: "https://www.youtube.com/@alemanbd",
+    whatsapp: "https://wa.me/8801827676737",
   },
-  mapEmbed:
-    "https://www.google.com/maps/embed?pb=",
+  mapEmbed:"https://www.google.com/maps?q=22.50474158324156,91.81068057141144&output=embed",
 };
 
 export type NavItem = { to: string; label: Bi };

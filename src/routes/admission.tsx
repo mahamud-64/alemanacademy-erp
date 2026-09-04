@@ -2626,7 +2626,7 @@ const [photoFile, setPhotoFile] = useState<File | null>(null);
                 </div>
 
                 <div class="contact-strip">
-                  E-mail:alemanislamicacademy@gmail.com &nbsp;&nbsp; Follow us:facebook.com/alemanbd
+                  E-mail:alemanislamicacademy@gmail.com &nbsp;&nbsp; Follow us:facebook.com/allemanbd
                 </div>
 
                 <div class="form-meta-row">

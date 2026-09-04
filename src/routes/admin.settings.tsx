@@ -29,8 +29,8 @@ type ExtraSettings = {
 };
 
 const extraDefaults: ExtraSettings = {
-  facebook: "https://facebook.com/alemanacademy",
-  youtube: "https://youtube.com/@alemanacademy",
+  facebook: "https://facebook.com/allemanbd",
+  youtube: "https://www.youtube.com/@alemanbd",
   mapUrl: "https://maps.google.com/?q=Chattogram",
   footerNote: "© Al Eman Islamic Academy — All rights reserved.",
   metaTitle: "Al Eman Islamic Academy | Chattogram",

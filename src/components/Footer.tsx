@@ -5,6 +5,7 @@ import logo from "@/assets/logo.png";
 import { useLang } from "@/lib/i18n";
 import { school, primaryNav, moreNav } from "@/data/site";
 import { useSettings } from "@/lib/content";
+import { PWAInstallButton } from "@/components/PWAInstallButton";
 
 export function Footer() {
   const { lang, t, tb } = useLang();
@@ -72,6 +73,9 @@ export function Footer() {
               <Link to="/login" className="hover:text-gold">
                 {t("Student Portal", "স্টুডেন্ট পোর্টাল")}
               </Link>
+            </li>
+            <li className="pt-2">
+              <PWAInstallButton className="border-gold text-gold hover:bg-gold/10" />
             </li>
           </ul>
         </nav>

@@ -91,7 +91,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Al Eman Islamic Academy, Chattogram — integrating Islamic and modern education from Play Group to Class X.",
+          "Al Eman Islamic Academy | Committed to Integrating Islamic and Modern Education",
       },
       {
         name: "author",
@@ -117,12 +117,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         property: "og:title",
-        content: "Al Eman Islamic Academy | Chattogram",
+        content: "Al Eman Islamic Academy | Hathazari, Chattogram",
       },
       {
         property: "og:description",
         content:
-          "Al Eman Islamic Academy, Chattogram — integrating Islamic and modern education from Play Group to Class X.",
+          "Al Eman Islamic Academy | Committed to Integrating Islamic and Modern Education",
       },
       {
         property: "og:url",
@@ -145,7 +145,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "twitter:description",
         content:
-          "Al Eman Islamic Academy, Chattogram — integrating Islamic and modern education from Play Group to Class X.",
+          "Al Eman Islamic Academy | Committed to Integrating Islamic and Modern Education",
       },
 
       // Browser UI
@@ -231,7 +231,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           logo: "https://aleman-academy.vercel.app/favicon.png",
           description:
             "Al Eman Islamic Academy, Chattogram — committed to integrating Islamic and modern education.",
-          telephone: "+8801819802313",
+          telephone: "+8801840160715",
           email: "alemanislamicacademy@gmail.com",
           address: {
             "@type": "PostalAddress",

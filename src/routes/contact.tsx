@@ -32,7 +32,7 @@ const contactSchema = z.object({
 });
 
 function Contact() {
-  const { t, tb } = useLang();
+  const { lang, t, tb } = useLang();
   const { value: settings } = useSettings();
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);
@@ -106,14 +106,41 @@ function Contact() {
     }
   };
 
-  const details = [
-    { icon: MapPin, label: { en: "Address", bn: "ঠিকানা" }, value: tb(school.fullAddress) },
-    { icon: Phone, label: { en: "Phone", bn: "ফোন" }, value: settings.phone },
-    { icon: Mail, label: { en: "Email", bn: "ইমেইল" }, value: settings.email },
-    { icon: MessageCircle, label: { en: "WhatsApp", bn: "হোয়াটসঅ্যাপ" }, value: "+8801319802313" },
-    { icon: Clock, label: { en: "Office hours", bn: "অফিস সময়" }, value: tb(school.hours) },
-  ];
 
+  const details = [
+    {
+      icon: MapPin,
+      label: { en: "Address", bn: "ঠিকানা" },
+      value: tb(school.fullAddress),
+      href: "https://www.google.com/maps/search/?api=1&query=22.50474158324156,91.81068057141144",
+      external: true,
+    },
+    {
+      icon: Phone,
+      label: { en: "Phone", bn: "ফোন" },
+      value: settings.phone,
+      href: `tel:${settings.phone}`,
+    },
+    {
+      icon: Mail,
+      label: { en: "Email", bn: "ইমেইল" },
+      value: settings.email,
+      href: `mailto:${settings.email}`,
+    },
+    {
+      icon: MessageCircle,
+      image: "/icon/whatsapp.png",
+      label: { en: "WhatsApp", bn: "হোয়াটসঅ্যাপ" },
+      value: "+8801827676737",
+      href: "https://wa.me/8801827676737",
+      external: true,
+    },
+    {
+      icon: Clock,
+      label: { en: "Office hours", bn: "অফিস সময়" },
+      value: tb(school.hours),
+    },
+  ];
   return (
     <>
       <PageHero
@@ -126,37 +153,101 @@ function Contact() {
       />
 
       <Section>
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div>
+        <div className="grid min-w-0 w-full gap-10 lg:grid-cols-2">
+          <div className="min-w-0 w-full">
             <SectionTitle align="left" eyebrow={t("Reach us", "যোগাযোগের তথ্য")} title={t("Our office", "আমাদের অফিস")} />
             <ul className="mt-6 space-y-4">
-              {details.map((d) => (
-                <li key={d.label.en} className="surface-card flex gap-4 p-5">
-                  <span className="grid size-10 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">
-                    <d.icon className="size-4" aria-hidden />
-                  </span>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-gold-foreground">{tb(d.label)}</p>
-                    <p className="mt-0.5 text-sm text-foreground">{d.value}</p>
+             {details.map((item) => {
+                const content = (
+                  <>
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                      {item.image ? (
+                        <img
+                          src={item.image}
+                          alt=""
+                          className="size-7 object-contain"
+                        />
+                      ) : (
+                        <item.icon className="size-5 text-primary" />
+                      )}
+                    </div>
+
+                    <div className="min-w-0 flex-1 overflow-hidden">
+                      <p className="text-sm font-semibold">
+                        {lang === "bn" ? item.label.bn : item.label.en}
+                      </p>
+
+                      <p className="min-w-0 break-words text-sm text-muted-foreground [overflow-wrap:anywhere]">
+                        {item.value}
+                      </p>
+                    </div>
+                  </>
+                );
+
+                return item.href ? (
+                  <a
+                    key={item.label.en}
+                    href={item.href}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noreferrer" : undefined}
+                    className="flex w-full min-w-0 items-start gap-4 overflow-hidden rounded-2xl border bg-card p-5 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                  >
+                    {content}
+                  </a>
+                ) : (
+                  <div
+                    key={item.label.en}
+                    className="flex w-full min-w-0 items-start gap-4 overflow-hidden rounded-2xl border bg-card p-5"
+                  >
+                    {content}
                   </div>
-                </li>
-              ))}
+                );
+              })}
             </ul>
 
-            <div className="mt-6 flex gap-2">
-              <a href={school.social.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className="rounded-full bg-primary/10 p-2.5 text-primary hover:bg-primary hover:text-primary-foreground">
-                <Facebook className="size-4" aria-hidden />
+            <div className="mt-6 flex items-center gap-4">
+              {/* Facebook */}
+              <a
+                href={school.social.facebook}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                className="flex size-14 items-center justify-center rounded-2xl bg-white shadow-[0_4px_14px_rgba(0,0,0,0.10)] ring-1 ring-black/5 outline-none transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.15)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              >
+                <img
+                  src="/icon/facebook.png"
+                  alt="Facebook"
+                  className="size-9 object-contain"
+                />
               </a>
-              <a href={school.social.youtube} target="_blank" rel="noreferrer" aria-label="YouTube" className="rounded-full bg-primary/10 p-2.5 text-primary hover:bg-primary hover:text-primary-foreground">
-                <Youtube className="size-4" aria-hidden />
+              {/* WhatsApp */}
+              <a
+                href={school.social.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="WhatsApp"
+                className="flex size-14 items-center justify-center rounded-2xl bg-white shadow-[0_4px_14px_rgba(0,0,0,0.10)] ring-1 ring-black/5 outline-none transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.15)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              >
+                <img
+                  src="/icon/whatsapp.png"
+                  alt="WhatsApp"
+                  className="size-9 object-contain"
+                />
               </a>
-              <a href={school.social.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="rounded-full bg-primary/10 p-2.5 text-primary hover:bg-primary hover:text-primary-foreground">
-                <MessageCircle className="size-4" aria-hidden />
+              {/* YouTube — kept as it is */}
+              <a
+                href={school.social.youtube}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="YouTube"
+                className="flex size-14 items-center justify-center rounded-2xl bg-white text-primary shadow-[0_4px_14px_rgba(0,0,0,0.10)] ring-1 ring-black/5 outline-none transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.15)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              >
+                <Youtube className="size-10" aria-hidden />
               </a>
             </div>
           </div>
 
-          <div className="surface-card p-7">
+          <div className="surface-card min-w-0 w-full p-7">
             <h2 className="text-xl font-bold text-primary">{t("Send a message", "বার্তা পাঠান")}</h2>
             {sent ? (
               <div className="mt-5 rounded-lg bg-success/10 p-4 text-sm text-success" role="status">
