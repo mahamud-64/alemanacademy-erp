@@ -36,7 +36,7 @@ export const primaryNav: NavItem[] = [
   { to: "/about", label: { en: "About", bn: "পরিচিতি" } },
   { to: "/academics", label: { en: "Academics", bn: "শিক্ষাক্রম" } },
   { to: "/notices", label: { en: "Notice", bn: "নোটিশ বোর্ড" } },
-  { to: "/results", label: { en: "Results", bn: "ফলাফল" } },
+  { to: "/resultTemp", label: { en: "Results", bn: "ফলাফল" } },
   { to: "/gallery", label: { en: "Gallery", bn: "গ্যালারি" } },
   { to: "/admission", label: { en: "Admission", bn: "ভর্তি" } },
   { to: "/contact", label: { en: "Contact", bn: "যোগাযোগ" } },

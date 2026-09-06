@@ -84,7 +84,7 @@ function Academics() {
                 </li>
               ))}
             </ul>
-            <Link to="/results" className="mt-6 inline-block text-sm font-semibold text-primary hover:underline">
+            <Link to="/resultTemp" className="mt-6 inline-block text-sm font-semibold text-primary hover:underline">
               {t("Check published results →", "প্রকাশিত ফলাফল দেখুন →")}
             </Link>
           </div>
