@@ -75,7 +75,7 @@ function Home() {
 
   const quickLinks = [
     { to: "/admission", icon: GraduationCap, label: { en: "Admission", bn: "ভর্তি" } },
-    { to: "/results", icon: BookOpen, label: { en: "Results", bn: "ফলাফল" } },
+    { to: "/resultTemp", icon: BookOpen, label: { en: "Results", bn: "ফলাফল" } },
     { to: "/notices", icon: Bell, label: { en: "Notices", bn: "নোটিশ" } },
     { to: "/routine", icon: CalendarDays, label: { en: "Class Routine", bn: "ক্লাস রুটিন" } },
   ] as const;
@@ -112,7 +112,7 @@ function Home() {
                 {t("Apply for Admission", "ভর্তির আবেদন")} <ArrowRight className="size-4" aria-hidden />
               </Link>
               <Link
-                to="/results"
+                to="/resultTemp"
                 className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/40 px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10"
               >
                 {t("Check Results", "ফলাফল দেখুন")}

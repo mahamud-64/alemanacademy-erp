@@ -1777,6 +1777,7 @@ const [photoFile, setPhotoFile] = useState<File | null>(null);
       }
     }
 
+
     setErrors({
       submit:
         "Unable to submit the application. Please try again.",

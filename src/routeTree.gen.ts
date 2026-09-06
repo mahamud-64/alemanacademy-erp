@@ -22,6 +22,7 @@ import { Route as DeveloperRouteImport } from './routes/developer'
 import { Route as FacilitiesRouteImport } from './routes/facilities'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as ResultTempRouteImport } from './routes/resultTemp'
 import { Route as ResultsRouteImport } from './routes/results'
 import { Route as RoutineRouteImport } from './routes/routine'
 import { Route as TeacherRouteImport } from './routes/teacher'
@@ -100,6 +101,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResultTempRoute = ResultTempRouteImport.update({
+  id: '/resultTemp',
+  path: '/resultTemp',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResultsRoute = ResultsRouteImport.update({
   id: '/results',
   path: '/results',
@@ -175,6 +181,7 @@ export interface FileRoutesByFullPath {
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
   '/login': typeof LoginRoute
+  '/resultTemp': typeof ResultTempRoute
   '/results': typeof ResultsRoute
   '/routine': typeof RoutineRoute
   '/teacher': typeof TeacherRoute
@@ -201,6 +208,7 @@ export interface FileRoutesByTo {
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
   '/login': typeof LoginRoute
+  '/resultTemp': typeof ResultTempRoute
   '/results': typeof ResultsRoute
   '/routine': typeof RoutineRoute
   '/teacher': typeof TeacherRoute
@@ -229,6 +237,7 @@ export interface FileRoutesById {
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
   '/login': typeof LoginRoute
+  '/resultTemp': typeof ResultTempRoute
   '/results': typeof ResultsRoute
   '/routine': typeof RoutineRoute
   '/teacher': typeof TeacherRoute
@@ -258,6 +267,7 @@ export interface FileRouteTypes {
     | '/facilities'
     | '/gallery'
     | '/login'
+    | '/resultTemp'
     | '/results'
     | '/routine'
     | '/teacher'
@@ -284,6 +294,7 @@ export interface FileRouteTypes {
     | '/facilities'
     | '/gallery'
     | '/login'
+    | '/resultTemp'
     | '/results'
     | '/routine'
     | '/teacher'
@@ -311,6 +322,7 @@ export interface FileRouteTypes {
     | '/facilities'
     | '/gallery'
     | '/login'
+    | '/resultTemp'
     | '/results'
     | '/routine'
     | '/teacher'
@@ -339,6 +351,7 @@ export interface RootRouteChildren {
   FacilitiesRoute: typeof FacilitiesRoute
   GalleryRoute: typeof GalleryRoute
   LoginRoute: typeof LoginRoute
+  ResultTempRoute: typeof ResultTempRoute
   ResultsRoute: typeof ResultsRoute
   RoutineRoute: typeof RoutineRoute
   TeacherRoute: typeof TeacherRoute
@@ -438,6 +451,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resultTemp': {
+      id: '/resultTemp'
+      path: '/resultTemp'
+      fullPath: '/resultTemp'
+      preLoaderRoute: typeof ResultTempRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/results': {
@@ -561,6 +581,7 @@ const rootRouteChildren: RootRouteChildren = {
   FacilitiesRoute: FacilitiesRoute,
   GalleryRoute: GalleryRoute,
   LoginRoute: LoginRoute,
+  ResultTempRoute: ResultTempRoute,
   ResultsRoute: ResultsRoute,
   RoutineRoute: RoutineRoute,
   TeacherRoute: TeacherRoute,
