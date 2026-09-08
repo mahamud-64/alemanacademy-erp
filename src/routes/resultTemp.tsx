@@ -12,8 +12,8 @@ type ClassItem = {
 };
 
 const classes: ClassItem[] = [
-  { id: 'play', name: 'Play', pdfUrl: '/pdfs/i/j/l/neomonoultramicroscopicsilicovalconisis/Play.pdf' },
-  { id: 'nursery', name: 'Nursery', pdfUrl: '/pdfs/i/j/l/neomonoultramicroscopicsilicovalconisis/Nursery.pdf' },
+  { id: 'play', name: 'Play', pdfUrl: '/pdfs/i/j/l/neomonoultramicroscopicsilicovalconisis/Play1.pdf' },
+  { id: 'nursery', name: 'Nursery', pdfUrl: '/pdfs/i/j/l/neomonoultramicroscopicsilicovalconisis/Nursery1.pdf' },
   { id: 'class1', name: 'Class 1', pdfUrl: '/pdfs/i/j/l/neomonoultramicroscopicsilicovalconisis/Class1.pdf' },
   { id: 'class2', name: 'Class 2', pdfUrl: '/pdfs/i/j/l/neomonoultramicroscopicsilicovalconisis/Class2.pdf' },
   { id: 'class3', name: 'Class 3', pdfUrl: '/pdfs/i/j/l/neomonoultramicroscopicsilicovalconisis/Class3.pdf' },
