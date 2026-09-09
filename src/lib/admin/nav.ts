@@ -99,6 +99,19 @@ export const adminNav: AdminNavGroup[] = [
       { label: bi("Merit List", "মেধা তালিকা"), module: "marks", action: "merit" },
     ],
   },
+    /* ============================================================
+     NEW RESULT FILE MANAGER
+     ============================================================ */
+  {
+    label: bi("Results", "ফলাফল"),
+    icon: Award,
+    items: [
+      {
+        label: bi("Manage Results", "ফলাফল ব্যবস্থাপনা"),
+        module: "results-temp",
+      },
+    ],
+  },
   {
     label: bi("Fees", "ফি"),
     icon: CreditCard,

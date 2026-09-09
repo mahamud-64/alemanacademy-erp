@@ -3,6 +3,7 @@ import { useCollection } from "@/lib/admin/store";
 import { MarksEntry } from "@/components/admin/MarksEntry";
 import { ExamManager } from "@/components/admin/ExamManager";
 import { EnrollmentManager } from "@/components/admin/EnrollmentManager";
+import { ResultManager } from "@/components/admin/ResultManager";
 import { createFileRoute } from "@tanstack/react-router";
 import { getModule } from "@/lib/admin/registry";
 import { CrudModule } from "@/components/admin/CrudModule";
@@ -112,8 +113,9 @@ function ModulePage() {
 
   return (
     <div className="space-y-4">
-
-        {mod.id === "fee-entries" ? (
+        {mod.id === "results-temp" ? (
+          <ResultManager />
+        ) : mod.id === "fee-entries" ? (
           <FeeEntries />
         ) : mod.id === "sliding-news" ? (
           <SlidingNews />

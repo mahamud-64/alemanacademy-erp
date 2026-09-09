@@ -297,6 +297,7 @@ function RootComponent() {
         </main>
 
         {!hideLayout && <Footer />}
+        <Analytics />
       </LanguageProvider>
     </QueryClientProvider>
   );

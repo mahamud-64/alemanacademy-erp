@@ -80,6 +80,7 @@ export const defaultSettings: SiteSettings = {
   phone: school.phone,
   email: school.email,
   address: school.address.en,
+  whatsapp: school.social.whatsapp,
   admissionOpen: true,
 
   // Keep these for compatibility with the existing settings system
@@ -567,7 +568,7 @@ export const routinePeriods = [
 
 export const routineDays: { day: Bi; subjects: string[] }[] = [
   { day: { en: "Saturday", bn: "শনিবার" }, subjects: ["Qur'an", "Bangla", "Mathematics", "English", "ICT"] },
-  { day: { en: "Sunday", bn: "রবিবার" }, subjects: ["Qur'an", "English", , "Mathematics", "Bangla"] },
+  { day: { en: "Sunday", bn: "রবিবার" }, subjects: ["Qur'an", "English", "Mathematics", "Bangla"] },
   { day: { en: "Monday", bn: "সোমবার" }, subjects: ["Qur'an", "Mathematics", "Islamic Studies", "English", "BGS"] },
   { day: { en: "Tuesday", bn: "মঙ্গলবার" }, subjects: ["Qur'an", "Bangla", "Arabic", "Mathematics"] },
   { day: { en: "Wednesday", bn: "বুধবার" }, subjects: ["Qur'an", "ICT", "English", "Islamic Studies",  "Games"] },

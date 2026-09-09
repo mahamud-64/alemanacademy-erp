@@ -315,6 +315,25 @@ export const modules: ModuleDef[] = [
     ],
   },
   {
+    id: "results-temp",
+    title: bi(
+      "Results",
+      "ফলাফল",
+    ),
+    group: bi(
+      "Academic",
+      "একাডেমিক",
+    ),
+    description: bi(
+      "Upload and manage public result PDF and JPEG files.",
+      "পাবলিক ফলাফলের PDF ও JPEG ফাইল আপলোড ও পরিচালনা করুন।",
+    ),
+    storageKey: "aeia.admin.results-temp",
+    fields: [],
+    columns: [],
+    seed: [],
+  },
+  {
     id: "fees",
 
     title: bi(
