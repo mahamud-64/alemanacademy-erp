@@ -3,6 +3,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { LogOut } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { useStudentAuth } from "@/lib/auth";
+import { useNotices } from "@/lib/content";
 import { resultsDb } from "@/data/site";
 import { Marksheet } from "@/components/Marksheet";
 
@@ -294,12 +295,12 @@ function Dashboard() {
         ) : null}
       </div>
 
-      <p className="mt-8 text-xs text-muted-foreground">
+      {/*<p className="mt-8 text-xs text-muted-foreground">
         {t(
           "Portal data is demo content stored in your browser. Connect a backend to serve live student records securely.",
           "পোর্টালের তথ্য আপনার ব্রাউজারে সংরক্ষিত ডেমো ডেটা। প্রকৃত শিক্ষার্থী তথ্যের জন্য ব্যাকএন্ড সংযুক্ত করুন।",
         )}
-      </p>
+      </p>*/}
       <input type="hidden" className={inputClass} />
     </Section>
   );

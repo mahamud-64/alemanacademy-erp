@@ -228,7 +228,7 @@ export type PortalStudent = {
 export const portalStudents: PortalStudent[] = [
   {
     studentId: "DEMO2026",
-    password: "demo123",
+    password: "demo1234",
     name: { en: "Muhammad Fayaj Hossain", bn: "মুহাম্মদ ফায়াজ হোসেন" },
     className: { en: "Class IX", bn: "নবম শ্রেণি" },
     section: "A",

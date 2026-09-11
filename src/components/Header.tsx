@@ -39,7 +39,9 @@ export function Header() {
   const [query, setQuery] = useState("");
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const searchRef = useRef<HTMLInputElement>(null);
-
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
+  const trackingSwipe = useRef(false);
   useEffect(() => {
     setOpen(false);
     setSearchOpen(false);
@@ -48,7 +50,50 @@ export function Header() {
   useEffect(() => {
     if (searchOpen) searchRef.current?.focus();
   }, [searchOpen]);
+  useEffect(() => {
+    const handleTouchStart = (e: TouchEvent) => {
+      const touch = e.touches.item(0);
 
+      if (!touch) return;
+
+      // Start tracking only from the right edge
+      trackingSwipe.current = touch.clientX >= window.innerWidth  *0.7;
+
+      if (trackingSwipe.current) {
+        touchStartX.current = touch.clientX;
+        touchStartY.current = touch.clientY;
+      }
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (!trackingSwipe.current) return;
+
+      const touch = e.changedTouches.item(0);
+
+      if (!touch) return;
+
+      const deltaX = touch.clientX - touchStartX.current;
+      const deltaY = touch.clientY - touchStartY.current;
+
+      // Horizontal swipe left
+      if (
+        deltaX < -70 &&
+        Math.abs(deltaX) > Math.abs(deltaY) * 1.3
+      ) {
+        setOpen(true);
+      }
+
+      trackingSwipe.current = false;
+    };
+
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+    return () => {
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, []);
   const index = useMemo<SearchHit[]>(() => {
     const pages = [...primaryNav, ...moreNav, { to: "/login", label: { en: "Student Login", bn: "স্টুডেন্ট লগইন" } }];
     return [
@@ -129,7 +174,12 @@ export function Header() {
 
           <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Primary">
             {primaryNav.map((item) => (
-              <Link key={item.to} to={item.to} className={navLinkClass(item.to)}>
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={() => setOpen(false)}
+                className={navLinkClass(item.to)}
+              >
                 {tb(item.label)}
               </Link>
             ))}
@@ -163,6 +213,7 @@ export function Header() {
            
             <Link
               to="/login"
+              onClick={() => setOpen(false)}
               className="hidden items-center justify-center rounded-full border border-primary px-3.75 py-1.75 text-center text-sm font-semibold text-primary transition-colors hover:bg-primary/5 sm:inline-flex"
             >
               {t("Student Login", "স্টুডেন্ট লগইন")}
@@ -170,6 +221,7 @@ export function Header() {
 
             <Link
               to="/admission"
+              onClick={() => setOpen(false)}
               className="hidden items-center justify-center rounded-full bg-gold px-3.5 py-2 text-center text-sm font-semibold text-gold-foreground transition-all hover:brightness-105 sm:inline-flex"
             >
               {t("Apply Now", "আবেদন করুন")}

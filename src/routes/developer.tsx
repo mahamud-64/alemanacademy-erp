@@ -1,3 +1,4 @@
+import developerPhoto from "@/assets/developer.png";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowLeft,
@@ -69,13 +70,25 @@ function DeveloperPage() {
           <div className="overflow-hidden rounded-3xl border border-border bg-white shadow-sm">
 
             {/* Green profile header */}
-            <div className="h-24 bg-primary-deep sm:h-28" />
+{/* Green profile header */}
+<div className="h-30 bg-primary-deep sm:h-28" />
 
-            <div className="-mt-14 px-6 pb-8 text-center sm:px-10">
-              {/* Developer avatar */}
-              <div className="mx-auto flex size-28 items-center justify-center rounded-full border-4 border-white bg-primary/10 text-primary shadow-md sm:size-32">
-                <Code2 className="size-12 sm:size-14" />
-              </div>
+<div className="relative px-6 pb-8 pt-0 text-center sm:px-10">
+
+  {/* Developer avatar */}
+  <div className="relative mx-auto -mt-14 h-40 w-32 sm:h-44 sm:w-36">
+
+    {/* White circle behind */}
+    <div className="absolute left-1/2 top-1/2 size-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-md sm:size-37" />
+
+    {/* Developer cutout */}
+    <img
+      src={developerPhoto}
+      alt="Developer"
+      className="relative z-10 mx-auto h-full w-full -translate-y-5 object-contain"
+    />
+
+  </div>
 
               <h2 className="mt-5 text-2xl font-bold text-primary sm:text-3xl">
                 Al Mahamud Alam

@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Search } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { noticeCategories } from "@/data/site";
-import { useNotices } from "@/lib/content";
+import { useNotices, useSettings } from "@/lib/content";
 import { Badge, PageHero, Section, inputClass } from "@/components/ui-kit";
 import { cn } from "@/lib/utils";
 

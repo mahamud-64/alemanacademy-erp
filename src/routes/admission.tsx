@@ -3017,7 +3017,7 @@ const [photoFile, setPhotoFile] = useState<File | null>(null);
                             e.target.value,
                           )
                         }
-                        placeholder="e.g. APP-1786259048999"
+                        placeholder="e.g. 01"
                         className={inputClass}
                       />
                     </Field>

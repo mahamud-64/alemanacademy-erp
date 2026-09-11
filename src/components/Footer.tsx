@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 import { Link } from "@tanstack/react-router";
 import { Facebook, Youtube, MessageCircle, Phone, Mail, MapPin, Send } from "lucide-react";
 import logo from "@/assets/logo.png";
@@ -12,6 +13,7 @@ export function Footer() {
   const { value: settings } = useSettings();
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   return (
     <footer className="no-print mt-auto bg-primary-deep text-primary-foreground">
@@ -100,9 +102,36 @@ export function Footer() {
 
           <form
             className="mt-5"
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              if (!/^\S+@\S+\.\S+$/.test(email)) return;
+
+              const normalizedEmail = email.trim().toLowerCase();
+
+              if (!/^\S+@\S+\.\S+$/.test(normalizedEmail)) return;
+
+              setSubmitting(true);
+              setSubscribed(false);
+
+              const { error } = await supabase
+                .from("newsletter_subscribers")
+                .insert({
+                  email: normalizedEmail,
+                });
+
+              setSubmitting(false);
+
+              if (error) {
+                if (error.code === "23505") {
+                  // Already subscribed
+                  setSubscribed(true);
+                  setEmail("");
+                  return;
+                }
+
+                console.error("Newsletter subscription failed:", error);
+                return;
+              }
+
               setSubscribed(true);
               setEmail("");
             }}
@@ -123,8 +152,9 @@ export function Footer() {
               />
               <button
                 type="submit"
+                disabled={submitting}
                 aria-label={t("Subscribe", "সাবস্ক্রাইব")}
-                className="rounded-full bg-gold p-2.5 text-gold-foreground hover:brightness-105"
+                className="rounded-full bg-gold p-2.5 text-gold-foreground hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <Send className="size-4" aria-hidden />
               </button>

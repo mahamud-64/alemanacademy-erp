@@ -2,7 +2,7 @@ import { createFileRoute, Link, useParams } from "@tanstack/react-router";
 import { ArrowLeft, Download, Printer, Share2 } from "lucide-react";
 import { useState } from "react";
 import { useLang } from "@/lib/i18n";
-import { useNotices } from "@/lib/content";
+import { useNotices, useSettings } from "@/lib/content";
 import { downloadPdf, printPage } from "@/lib/pdf";
 import { Badge, Section } from "@/components/ui-kit";
 

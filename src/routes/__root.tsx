@@ -276,12 +276,12 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
+ 
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
 
-  const hideLayout = pathname.startsWith("/admin/") || pathname === "/admin" || pathname === "/developer";
+  const hideLayout = pathname.startsWith("/admin/") || pathname === "/admin" || pathname === "/developer" ;
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -296,7 +296,7 @@ function RootComponent() {
           <Outlet />
         </main>
 
-        {!hideLayout && <Footer />}
+        {!hideLayout && pathname !== "/dashboard" && <Footer />}
         <Analytics />
       </LanguageProvider>
     </QueryClientProvider>

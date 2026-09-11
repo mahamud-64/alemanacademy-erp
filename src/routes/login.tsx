@@ -69,7 +69,7 @@ function Login() {
               autoComplete="username"
               required
               className={inputClass}
-              placeholder="DEMO2026"
+              placeholder="ID"
             />
           </Field>
           <Field label={t("Password", "পাসওয়ার্ড")}>

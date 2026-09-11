@@ -830,7 +830,7 @@ function ExaminationResultsPage() {
                             </div>
 
                             <p className="text-sm text-gray-600">
-                              This browser can't preview the{" "}
+                              Couldn't preview the{" "}
                               {formatFileType(
                                 selectedClass.fileType,
                               )}{" "}
